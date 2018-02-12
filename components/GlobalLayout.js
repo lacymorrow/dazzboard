@@ -17,7 +17,7 @@ const Layout = (props) => {
 	return (
 		<Provider
 			theme={{
-				// font: '"Avenir Next", Helvetica, sans-serif',
+				font: '"Avenir Next", Helvetica, sans-serif',
 				fontSizes: [12, 16, 24, 36, 48, 72]
 			}}>
 			<div style={sx.layout}>

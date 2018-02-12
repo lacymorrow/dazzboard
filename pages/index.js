@@ -6,17 +6,14 @@ import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 
 /* Custom Components */
+import App from '../components/App'
 import Layout from '../components/GlobalLayout'
 import Widget from '../components/Widget'
 
 // Renders the main app page
-const Index = props => {
+const Index = () => {
 	return (
-		<Layout	text={props.title} title={props.title}>
-			<div>
-				<Widget>Init Next</Widget>
-			</div>
-		</Layout>
+		<App />
 	)
 }
 

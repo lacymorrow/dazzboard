@@ -20,9 +20,6 @@ const Header = (props) => {
 				<Link prefetch href="/">
 					<a>{props.text || 'Home'}</a>
 				</Link>
-				<Link prefetch href="/about">
-					<a>About</a>
-				</Link>
 				<Box ml="auto" />
 				<Link href="https://github.com/lacymorrow/init-next">
 					<a>Github</a>

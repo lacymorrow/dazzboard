@@ -11,29 +11,6 @@ app
 		const port = 3000
 		const server = express()
 
-		// // Sometimes routes attempt a non-existent favicon lookup
-		// server.get('/favicon.ico', (req, res) => {
-		//   return handle(req, res)
-		// })
-
-		// Handle all redirects
-		const redirects = [
-		  // { from: '/old-link', to: '/new-link'},
-		  // { from: '/old-link2', to: '/new-link2', 301, 'get' }
-		]
-
-		redirects.forEach(({ from, to, type = 301, method = 'get' }) => {
-		  server[method](from, (req, res) => {
-		    res.redirect(type, to)
-		  })
-		})
-
-		server.get('/repo/:repo', (req, res) => {
-			const actualPage = '/'
-			const queryParams = { repo: req.params.repo }
-			app.render(req, res, actualPage, queryParams)
-		})
-
 		server.get('*', (req, res) => {
 			return handle(req, res)
 		})
