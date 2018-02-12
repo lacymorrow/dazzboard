@@ -1,51 +1,22 @@
 import jsonp from 'jsonp'
 import assign from 'object-assign'
 import PropTypes from 'prop-types'
-import {
-  config,
-  Flex, Box,
-  Banner,
-  Block,
-  Button,
-  Close,
-  Container,
-  Drawer,
-  Heading,
-  NavItem,
-  Panel,
-  PanelHeader,
-  SectionHeader,
-  Footer,
-  Space,
-  Text,
-} from 'rebass'
 
 import Layout from './GlobalLayout'
+import { colors } from './styles'
 
 class App extends React.Component {
   constructor () {
     super()
     this.state = assign(
       {},
-      config,
       {
         drawerOpen: false,
         repo: {}
       }
     )
     this.toggle = this.toggle.bind(this)
-    this.updateContext = this.updateContext.bind(this)
     this.handleChange = this.handleChange.bind(this)
-  }
-
-  static childContextTypes = {
-    rebass: PropTypes.object
-  }
-
-  getChildContext () {
-    return {
-      rebass: this.state
-    }
   }
 
   toggle (key) {
@@ -55,33 +26,48 @@ class App extends React.Component {
     }
   }
 
-  updateContext (state) {
-    this.setState(state)
-  }
-
   handleChange (e) {
     this.setState({ [e.target.name]: e.target.value })
   }
 
   componentDidMount () {
-    jsonp('https://api.github.com/repos/jxnblk/rebass?callback=callback', (err, response) => {
+    jsonp('https://api.github.com/repos/jxnblk/rebass', (err, response) => {
       this.setState({ repo: response.data })
+      console.log(response.data)
     }).bind(this)
   }
 
+
   render () {
+    const sx = {
+      dash: {
+        padding: '0 1em',
+        width: '100%',
+        maxWidth: '2800px',
+        borderRadius: '4px',
+        paddingTop: '5px',
+        paddingBottom: '5px',
+        boxShadow: '0 6px 20px 0 rgba(37, 45, 71, 0.34)',
+        color: colors.lighter,
+        backgroundColor: colors.dashboardBgDarker,
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        position: 'relative',
+        zIndex: '99'
+      }
+    }
     const {
-      color,
-      backgroundColor,
       drawerOpen,
-      overlayOpen
+      repo
     } = this.state
 
     return (
-      <Layout style={{
-          backgroundColor
-        }}>
-        HELLO, World!
+      <Layout>
+        <div style={sx.dash}>
+          HELLO, World!
+          {repo.name}
+        </div>
       </Layout>
     )
   }

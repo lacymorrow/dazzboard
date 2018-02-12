@@ -1,7 +1,8 @@
 const cx = key => colors[key] || key
-const gradient = (n, from, to) => `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
 
-const colors = {
+export const gradient = (n, from, to) => `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
+
+export const colors = {
   cyan: '#0ff',
   blue: '#08f',
   violet: '#80f',
@@ -69,13 +70,14 @@ const colors = {
   colorSuccess: '#06ffff'
 }
 
-const gradients = {
-  fire: gradient(315, colors.colorData1, colors.colorData2),
-  evening: gradient(315, colors.colorData3, colors.colorData4),
-  berry: gradient(315, colors.colorData5, colors.colorData6)
+export const gradients = {
+  fire: gradient(315, 'colorData1', 'colorData2'),
+  evening: gradient(315, 'colorData3', 'colorData4'),
+  berry: gradient(315, 'colorData5', 'colorData6'),
+  sunset: gradient(120, 'magenta', 'violet')
 }
 
-const fontSizes {
+export const fontSizes = {
   fontBodyXS: '12px',
   fontBodySM: '14px',
   fontHeaderXS: '11px',

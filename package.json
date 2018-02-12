@@ -26,5 +26,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "rebass": "^1.0.4"
+  },
+  "devDependencies": {
+    "webpack-jarvis": "^0.3.0"
   }
 }

@@ -1,10 +1,10 @@
 import { NavLink } from 'rebass'
-import { gradient } from './styles'
+import { gradients } from './styles'
 
 
 const Footer = () => (
 	<NavLink f={12} href="http://lacymorrow.com" style={{
-			backgroundImage: `${gradient(120, 'magenta', 'violet')}`
+			backgroundImage: gradients.sunset
 		}}>
 		Made by Lacy Morrow
 	</NavLink>

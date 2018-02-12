@@ -7,8 +7,16 @@ import Script from './Script'
 import { colors, gradient } from './styles'
 
 const sx = {
-	layout: {
-		color: '#222'
+	app: {
+		margin: '0',
+		padding: '40px',
+		width: '100%',
+		minHeight: '100vh',
+		position: 'relative',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		// backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
 	}
 }
 
@@ -20,7 +28,7 @@ const Layout = (props) => {
 				font: '"Avenir Next", Helvetica, sans-serif',
 				fontSizes: [12, 16, 24, 36, 48, 72]
 			}}>
-			<div style={sx.layout}>
+			<div>
 				<Head>
 					<title>{props.title || 'Init Next'}</title>
 
@@ -34,27 +42,65 @@ const Layout = (props) => {
 						}}
 					</Script>
 				</Head>
-				<Header {...other} />
-
-				{props.children}
-
-				<Footer />
+				<div style={sx.app}>
+					{props.children}
+				</div>
 			</div>
 
 			{/* global app styles */}
 			<style global jsx>{`
+				* {
+				  box-sizing: border-box;
+				}
+
+				html {
+					text-rendering: optimizeLegibility;
+				}
+				
+				a {
+				  text-decoration: none;
+				}
+
+				a:active,
+				a:hover {
+				  outline: 0;
+				}
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6,
+				p {
+				  padding: 0;
+				  margin: 0;
+				}
+
+				ul {
+				  padding: 0;
+				  list-style-type: none;
+				}
+
 				body {
-					background: white;
 					margin: 0;
 				}
-				a {
-					padding: 16px;
-					text-decoration: none;
-					color: inherit;
-					letter-spacing: 2.4px;
-					text-transform: uppercase;
-					font-size: 12px;
-					font-weight: 700;
+
+				::-webkit-scrollbar {
+					width: 16px;
+					background: var(--dashboard-bg-main);
+				}
+
+				::-webkit-scrollbar-thumb {
+					border: 5px solid transparent;
+					background-clip: padding-box;
+					padding: 2px;
+					border-radius: 8px;
+					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+				}
+
+				::-webkit-scrollbar-thumb :hover {
+					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 				}
 			`}</style>
 		</Provider>

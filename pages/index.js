@@ -1,14 +1,5 @@
-/* Libraries */
-// Universal fetch API
-import fetch from 'isomorphic-unfetch'
-
-/* Next Components */
-import Link from 'next/link'
-
-/* Custom Components */
+/* App Entry Point */
 import App from '../components/App'
-import Layout from '../components/GlobalLayout'
-import Widget from '../components/Widget'
 
 // Renders the main app page
 const Index = () => {
