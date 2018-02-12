@@ -1,29 +1,30 @@
 {
-  "name": "light-bootstrap-dashboard-react",
-  "version": "1.1.0",
-  "private": true,
-  "dependencies": {
-    "chartist": "^0.10.1",
-    "create-react-app": "^1.3.3",
-    "google-maps-react": "^1.1.0",
-    "node-sass-chokidar": "0.0.3",
-    "npm-run-all": "^4.1.1",
-    "react": "^15.6.1",
-    "react-bootstrap": "^0.31.1",
-    "react-chartist": "^0.13.0",
-    "react-dom": "^15.6.1",
-    "react-notification-system": "^0.2.15",
-    "react-router": "^4.1.2",
-    "react-router-dom": "^4.1.2",
-    "react-scripts": "1.0.10"
-  },
+  "name": "init-next",
+  "version": "1.0.0",
+  "description": "🔋 A juiced boilerplate for Next.JS projects.",
+  "main": "index.js",
+  "repository": "github:lacymorrow/init-next",
   "scripts": {
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "next": "next",
+    "dev": "node server.js",
+    "build": "next build",
+    "export": "next export",
+    "deploy": "now deploy",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "isomorphic-unfetch": "^2.0.0",
+    "jsonp": "^0.2.1",
+    "next": "^4.2.3",
+    "object-assign": "^4.1.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rebass": "^1.0.4"
   }
 }
