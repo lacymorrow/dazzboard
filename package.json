@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "google-map-react": "^0.31.0",
     "isomorphic-unfetch": "^2.0.0",
     "jsonp": "^0.2.1",
     "next": "^4.2.3",

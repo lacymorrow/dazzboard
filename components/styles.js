@@ -81,7 +81,8 @@ export const fontSizes = {
   fontBodyXS: '12px',
   fontBodySM: '14px',
   fontHeaderXS: '11px',
-  fontHeaderSM: '12px'
+  fontHeaderSM: '12px',
+  fontHeaderLG: '27px'
 }
 
 export default {

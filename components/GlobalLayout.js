@@ -1,44 +1,46 @@
 import { Provider } from 'rebass'
 import Head from 'next/head'
-import Header from './Header'
 import Footer from './Footer'
 import Script from './Script'
 
 import { colors, gradient } from './styles'
 
-const sx = {
-	app: {
-		margin: '0',
-		padding: '40px',
-		width: '100%',
-		minHeight: '100vh',
-		position: 'relative',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		// backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
-	}
-}
 
 const Layout = (props) => {
 	let {title, ...other} = props
+	
+	const sx = {
+		app: {
+			margin: '0',
+			padding: '40px',
+			width: '100%',
+			minHeight: '100vh',
+			position: 'relative',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			// backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
+		}
+	}
+	
 	return (
 		<Provider
 			theme={{
-				font: '"Avenir Next", Helvetica, sans-serif',
+				font: '"Montserrat", "Avenir Next", Helvetica, sans-serif',
 				fontSizes: [12, 16, 24, 36, 48, 72]
 			}}>
 			<div>
 				<Head>
-					<title>{props.title || 'Init Next'}</title>
+					<title>Dashes</title>
 
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<meta charSet="utf-8" />
 
+
 					<Script>
 						{() => {
 							// any arbitrary js
-							console.log(`init-next loaded`)
+							console.log(`dashes loaded`)
 						}}
 					</Script>
 				</Head>
@@ -55,6 +57,8 @@ const Layout = (props) => {
 
 				html {
 					text-rendering: optimizeLegibility;
+					--webkit-font-smoothing: antialiased;
+
 				}
 				
 				a {
@@ -88,7 +92,7 @@ const Layout = (props) => {
 
 				::-webkit-scrollbar {
 					width: 16px;
-					background: var(--dashboard-bg-main);
+					background: ${colors.dashboardBgMain};
 				}
 
 				::-webkit-scrollbar-thumb {
