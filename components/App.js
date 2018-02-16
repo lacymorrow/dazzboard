@@ -12,7 +12,6 @@ import Card from './Card'
 import Header from './Header'
 import { colors, gradients } from './styles'
 import DashGroup from './DashGroup'
-import DashList from './DashList'
 import Dash from './Dash'
 import Board from './Board'
 
@@ -78,9 +77,9 @@ class App extends React.Component {
           <Header />
           <Board>
             <Flex width={[1, 1, 1, 1/4]} height='100%' direction='column'>
-              <Card background={gradients.fire} title='Compiler Status' data='Idle' text='done in 0.249 sec'  />
-              <Card background={gradients.berry} title='Errors and Warnings' data='0' text='and no warnings' />
-              <Card background={gradients.evening} title='Total Asset Size' data='6.23 MB' />
+              <Card background={gradients.fire} title='Compiler Status' text='Idle' subtext='done in 0.249 sec'  />
+              <Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
+              <Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
             </Flex>
             <Dash width={[1, 1, 1, 1/2]}>
               <GoogleMapReact
@@ -90,10 +89,10 @@ class App extends React.Component {
                       zoom={11}
               />
             </Dash>
-            <DashList width={[1, 1, 1, 1/4]}>
+            <DashGroup width={[1, 1, 1, 1/4]}>
               <Dash
                 title='dist/components/Script.js'
-                data='0 CHUNKS, 1.08 KB'
+                text='0 CHUNKS, 1.08 KB'
                 badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
               </Dash>
               <Dash
@@ -148,19 +147,21 @@ class App extends React.Component {
                 HELLO, World!
                 {repo.name}
               </Dash>
-            </DashList>
+            </DashGroup>
           </Board>
           <Board>
-            <DashGroup width={[1, 1, 1, 1/2]}>
+            <DashGroup width={[1, 1, 1, 1/2]} title="Average Man!">
               <Dash
                 title='dist/components/Script.js'
-                data='0 CHUNKS, 1.08 KB'
+                text='0 CHUNKS, 1.08 KB'
                 badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
               </Dash>
               <Dash
-                title='Hello'>
-                ayyo, World!
-                {repo.name}
+                title='Global Average'
+                subtitle='160ms RTT'
+                text='0.4mbps'
+                subtext='119.06s'
+                badge={{error: '+114.06s'}}>
               </Dash>
               <Dash
                 title='Hello'>
@@ -209,6 +210,64 @@ class App extends React.Component {
                 HELLO, World!
                 {repo.name}
               </Dash>
+            </DashGroup>
+            <DashGroup>
+              <DashGroup title="Average Man">
+                <Dash
+                  title='dist/components/Script.js'
+                  text='0 CHUNKS, 1.08 KB'
+                  badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+                </Dash>
+                <Dash
+                  title='Global Average'
+                  subtitle='160ms RTT'
+                  text='0.4mbps'
+                  subtext='119.06s'
+                  badge={{error: '+114.06s'}}>
+                </Dash>
+                <Dash
+                  title='Hello'>
+                  byyo, World!
+                  {repo.name}
+                </Dash>
+                <Dash
+                  title='Hello'>
+                  cyyo, World!
+                  {repo.name}
+                </Dash>
+                <Dash>
+                  HELLO, World!
+                  {repo.name}
+                </Dash>
+              </DashGroup>
+              <DashGroup title="Average Man">
+                <Dash
+                  title='dist/components/Script.js'
+                  text='0 CHUNKS, 1.08 KB'
+                  badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+                </Dash>
+                <Dash
+                  title='Global Average'
+                  subtitle='160ms RTT'
+                  text='0.4mbps'
+                  subtext='119.06s'
+                  badge={{error: '+114.06s'}}>
+                </Dash>
+                <Dash
+                  title='Hello'>
+                  byyo, World!
+                  {repo.name}
+                </Dash>
+                <Dash
+                  title='Hello'>
+                  cyyo, World!
+                  {repo.name}
+                </Dash>
+                <Dash>
+                  HELLO, World!
+                  {repo.name}
+                </Dash>
+              </DashGroup>
             </DashGroup>
           </Board>
 

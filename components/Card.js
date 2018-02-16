@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { colors, fontSizes } from './styles'
 
 const Card = (props) => {
-	const {background, data, title, text} = props
+	const {background, title, text, subtext} = props
 	const { colorDark, colorMain, dashboardBgDarker } = colors
 	const { fontBodyXS, fontHeaderLG } = fontSizes
 	const sx = {
@@ -26,11 +26,11 @@ const Card = (props) => {
 			textTransform: 'uppercase',
 			paddingBottom: '7px'
 		},
-		data: {
+		text: {
 			color: colorMain || '#222',
 			fontSize: fontHeaderLG || '27px'
 		},
-		text: {
+		subtext: {
 			color: colorMain || '#444',
 			fontSize: fontBodyXS || '12px'
 		}
@@ -40,11 +40,11 @@ const Card = (props) => {
 			{title && (
 				<Text is='h4' style={sx.title}>{title}</Text>
 			)}
-			{data && (
-				<Text is='h3' style={sx.data}>{data}</Text>
-			)}
 			{text && (
-				<Text style={sx.text}>{text}</Text>
+				<Text is='h3' style={sx.text}>{text}</Text>
+			)}
+			{subtext && (
+				<Text style={sx.subtext}>{subtext}</Text>
 			)}
 			{props.children}
 		</Box>
@@ -53,9 +53,9 @@ const Card = (props) => {
 
 Card.propTypes = {
   background: PropTypes.string,
-  data: PropTypes.string,
+  text: PropTypes.string,
   title: PropTypes.string,
-  text: PropTypes.string
+  subtext: PropTypes.string
 }
 
 export default Card 
