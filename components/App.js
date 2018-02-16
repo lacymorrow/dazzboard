@@ -51,13 +51,17 @@ class App extends React.Component {
 
   render () {
     const sx = {
-      dash: {
+      app: {
         width: '100%',
         maxWidth: '2800px',
         borderRadius: '4px',
         paddingTop: '5px',
         paddingBottom: '5px',
         boxShadow: '0 6px 20px 0 rgba(37, 45, 71, 0.34)',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        position: 'relative',
         zIndex: '99',
         color: colors.lighter,
         backgroundColor: colors.dashboardBgDarker,
@@ -70,15 +74,15 @@ class App extends React.Component {
 
     return (
       <Layout>
-        <div style={sx.dash}>
+        <div style={sx.app}>
           <Header />
           <Board>
-            <Flex width={[1, 1, 1, 1]} height='100%' direction='column'>
+            <Flex width={[1, 1, 1, 1/4]} height='100%' direction='column'>
               <Card background={gradients.fire} title='Compiler Status' data='Idle' text='done in 0.249 sec'  />
               <Card background={gradients.berry} title='Errors and Warnings' data='0' text='and no warnings' />
               <Card background={gradients.evening} title='Total Asset Size' data='6.23 MB' />
             </Flex>
-            <Dash width={[1, 1, 1, 1]}>
+            <Dash width={[1, 1, 1, 1/2]}>
               <GoogleMapReact
                       style={{height: '100%'}}
                       bootstrapURLKeys={{key: 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro'}}
@@ -86,7 +90,7 @@ class App extends React.Component {
                       zoom={11}
               />
             </Dash>
-            <DashList width={[1, 1, 1, 1]}>
+            <DashList width={[1, 1, 1, 1/4]}>
               <Dash
                 title='dist/components/Script.js'
                 data='0 CHUNKS, 1.08 KB'
@@ -145,6 +149,67 @@ class App extends React.Component {
                 {repo.name}
               </Dash>
             </DashList>
+          </Board>
+          <Board>
+            <DashGroup width={[1, 1, 1, 1/2]}>
+              <Dash
+                title='dist/components/Script.js'
+                data='0 CHUNKS, 1.08 KB'
+                badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+              </Dash>
+              <Dash
+                title='Hello'>
+                ayyo, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                byyo, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                cyyo, World!
+                {repo.name}
+              </Dash>
+              <Dash>
+                HELLO, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                ayyo, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                byyo, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                cyyo, World!
+                {repo.name}
+              </Dash>
+              <Dash>
+                HELLO, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                ayyo, World!
+                {repo.name}
+              </Dash>
+              <Dash
+                title='Hello'>
+                byyo, World!
+                {repo.name}
+              </Dash>
+              <Dash>
+                HELLO, World!
+                {repo.name}
+              </Dash>
+            </DashGroup>
           </Board>
 
         </div>

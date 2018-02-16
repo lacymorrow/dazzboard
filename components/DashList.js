@@ -11,20 +11,18 @@ import Board from './Board'
 import { colors } from './styles'
 
 const DashList = (props) => {
-	const { data, width } = props
+	const { data, height, width } = props
 	const sx = {
 		dash: {
-			// flexGrow: '1'
 			// flexShrink: '1',
-
 		},
 		board: {
-			flexWrap: 'wrap',
 			background: colors.dashboardBgDarker,
 			margin: '0 0 4px 0',
 			padding: '0 4px 4px 4px',
 			overflowX: 'hidden',
-			overflowY: 'auto'
+			overflowY: 'auto',
+			maxHeight: height || '455px'
 		},
 	}
 	return (

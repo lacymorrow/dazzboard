@@ -6,40 +6,39 @@
 import PropTypes from 'prop-types'
 
 import Dash from './Dash'
+import Board from './Board'
 
 import { colors } from './styles'
 
 const DashGroup = (props) => {
-	const { data, width } = props
+	const { data, height } = props
 	const sx = {
 		dash: {
-			flexGrow: '1',
-			height: '90px',
-			flex: '1 1 0%',
-			margin: '0.5rem',
-			padding: '20px'
+
 		},
-		// board: {
-		// 	background: colors.dashboardBgDarker,
-		// 	margin: '0 0 4px 0',
-		// 	padding: '0 4px 4px 4px',
-		// 	alignItems: 'flex-start',
-		// 	alignContent: 'space-between',
-		// 	overflowX: 'hidden',
-		// 	overflowY: 'auto'
-		// }
+		board: {
+			background: colors.dashboardBgDarker,
+			margin: '0 0 4px 0',
+			padding: '0 4px 4px 4px',
+			overflowX: 'hidden',
+			overflowY: 'auto',
+			justifyContent: 'space-between',
+			alignItems: 'space-between',
+			maxHeight: height || '455px'
+		},
 	}
 	return (
-		<Flex m={1} w={1} h={1} style={sx.board} direction='row' wrap { ...props }>
+		<Board style={sx.board} { ...props } >
 			{React.Children.map(props.children, (child, i) => {
-				return (<Dash m={0} mb={2} w={1} style={sx.dash} >{child}</Dash>)
+				return (<Dash m={0} p={1} width={[1, 1/2, 1/2]} style={sx.dash} >{child}</Dash>)
 			})}
-		</Flex>
+		</Board>
 	)
 }
 
+
 DashGroup.propTypes = {
-	width: PropTypes.string || PropTypes.number || PropTypes.object
+	height: PropTypes.string || PropTypes.number
 }
 
 export default DashGroup 

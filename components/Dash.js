@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { colors, fontSizes } from './styles'
 
 const Dash = (props) => {
-	const { background, badge, data, title, text } = props
+	const { background, width, badge, data, title, text } = props
 	const { light, lighter, colorDark, colorMain, colorError, colorSuccess, dashboardBgDarker, dashboardBgMain } = colors
 	const { fontBodyXS, fontBodySM, fontHeaderLG, fontHeaderXS } = fontSizes
 	const sx = {
@@ -18,7 +18,6 @@ const Dash = (props) => {
 			background: background || dashboardBgMain || '#EEE',
 			padding: (props.children && !props.padding) ? '0' : '15px',
 			position: 'relative',
-			margin: '0 0 4px 0'
 		},
 		badgeError: {
 			backgroundColor: colorError,
@@ -37,8 +36,7 @@ const Dash = (props) => {
 		title: {
 			color: lighter || '#111',
 			fontSize: fontBodySM || '14px',
-			paddingBottom: '10px',
-			width: '100%'
+			paddingBottom: '10px'
 		},
 		data: {
 			color: light || '#222',
@@ -52,21 +50,21 @@ const Dash = (props) => {
 		}
 	}
 	return (
-		<Box m={1} style={sx.dash} { ...props }>
-			<Flex direction='column'>
-				{title && ( <Text is='h4' style={sx.title}>{title}</Text> )}
-				{data && ( <Text is='h5' style={sx.data}>{data}</Text> )}
+		<Box m={0} mb={1} width={width || 1} style={sx.dash} { ...props }>
+			<Flex wrap>
+				{title && ( <Text is='h4' width={1} style={sx.title}>{title}</Text> )}
+				{data && ( <Text is='h5' width={3/5} style={sx.data}>{data}</Text> )}
 				{badge && (
-					<Box w={1} mt={-4} style={{textAlign:'right'}}>
+					<Box w={2/5} style={{textAlign:'right'}}>
 						{badge.success && ( 
-								<Button style={sx.badgeSuccess}>{badge.success.text || badge.success}</Button>
+								<Button ml={1} mb={1} style={sx.badgeSuccess}>{badge.success.text || badge.success}</Button>
 						)}
 						{badge.error && ( 
-								<Button ml={1} style={sx.badgeError}>{badge.error.text || badge.error}</Button>
+								<Button ml={1} mb={1} style={sx.badgeError}>{badge.error.text || badge.error}</Button>
 						)}
 					</Box>
 				)}
-				{text && ( <Text style={sx.text}>{text}</Text> )}
+				{text && ( <Text width={1} style={sx.text}>{text}</Text> )}
 				{props.children}
 			</Flex>
 		</Box>
