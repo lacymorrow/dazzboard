@@ -92,7 +92,6 @@ const Layout = (props) => {
 
 				::-webkit-scrollbar {
 					width: 16px;
-					background: ${colors.dashboardBgMain};
 				}
 
 				::-webkit-scrollbar-thumb {
@@ -105,6 +104,14 @@ const Layout = (props) => {
 
 				::-webkit-scrollbar-thumb :hover {
 					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+				}
+				
+				.dashtab .dashgroup {
+					position: absolute;
+				}
+
+				.dashtab .dashgroup__title {
+					display: none;
 				}
 			`}</style>
 		</Provider>

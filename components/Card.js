@@ -8,7 +8,7 @@ import { colors, fontSizes } from './styles'
 
 const Card = (props) => {
 	const {background, title, text, subtext} = props
-	const { colorDark, colorMain, dashboardBgDarker } = colors
+	const { colorDark, colorMain } = colors
 	const { fontBodyXS, fontHeaderLG } = fontSizes
 	const sx = {
 		card: {

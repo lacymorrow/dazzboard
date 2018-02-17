@@ -58,7 +58,7 @@ const Dash = ( props ) => {
 		}
 	}
 	return (
-		<Box m={0} mb={1} width={width || 1} style={sx.dash} { ...props }>
+		<Box className='dash' m={0} mb={1} width={width || 1} style={sx.dash} { ...props }>
 			<Flex wrap>
 				{title && ( <Text is='h4' width={1} style={sx.title}>{title}   { subtitle && (
 					<span style={sx.subtitle}>{subtitle}</span>

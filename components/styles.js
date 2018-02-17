@@ -40,8 +40,8 @@ export const colors = {
   dashboardBgLightest: '#fff',
   dashboardBgLighter: '#2d3759',
   dashboardBgMain: '#1c2237',
-  dashboardBgDarker: '#141a2e',
-  dashboardBgDarkest: '#171d31',
+  dashboardBgDarker: '#171d31',
+  dashboardBgDarkest: '#141a2e',
   dashboardShadows: 'rgba(37,45,71,.34)',
   // orange
   colorData1: '#fb906f',

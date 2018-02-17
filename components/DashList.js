@@ -14,7 +14,7 @@ import Board from './Board'
 import { colors, fontSizes } from './styles'
 
 const DashGroup = ( props ) => {
-	const { data, color, height, title, text, subtext } = props
+	const { color, title, text, subtext } = props
 	const sx = {
 		dash: {
 			flex: '1 1 250px',
@@ -27,8 +27,7 @@ const DashGroup = ( props ) => {
 			overflowX: 'hidden',
 			overflowY: 'auto',
 			justifyContent: 'space-between',
-			alignItems: 'space-between',
-			maxHeight: height || '455px'
+			alignItems: 'space-between'
 		},
 		title: {
 			color: colors.colorMain,
@@ -37,13 +36,16 @@ const DashGroup = ( props ) => {
 			textTransform: 'uppercase',
 			fontWeight: '700',
 			margin: '4px'
+		},
+		text: {
+			color: colors.lighter
 		}
 	}
 
 	return (
-		<Board className='dashgroup' style={sx.board} { ...props } >
+		<Board style={sx.board} { ...props } >
 			{title && (
-				<Text className='dashgroup__title' is='h2' width={1} style={sx.title}>{title}</Text>
+				<Text is='h2' width={1} style={sx.title}>{title}</Text>
 			)}
 			{React.Children.map( props.children, ( child, i ) => {
 
@@ -56,6 +58,7 @@ const DashGroup = ( props ) => {
 }
 
 DashGroup.propTypes = {
+	height: PropTypes.string || PropTypes.number
 }
 
 export default DashGroup
