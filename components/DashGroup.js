@@ -2,7 +2,9 @@ import {
 	Flex,
 	Box,
 	List,
-	Text
+	Text,
+	Tabs,
+	TabItem
 } from 'rebass'
 import PropTypes from 'prop-types'
 
@@ -13,7 +15,7 @@ import { colors, fontSizes } from './styles'
 
 const DashGroup = ( props ) => {
 
-	const nested = props.children[0].type.displayName == 'DashGroup'
+	const nested = props.children[0] && props.children[0].type.displayName == 'DashGroup'
 	const { data, color, height, title, text, subtext } = props
 	const sx = {
 		dash: {
@@ -30,6 +32,13 @@ const DashGroup = ( props ) => {
 			alignItems: 'space-between',
 			maxHeight: height || '455px'
 		},
+		nestedDash: {
+			position: 'relative'
+
+		},
+		nestedBoard: {
+			position: 'absolute'
+		},
 		title: {
 			color: colors.colorMain,
 			fontSize: fontSizes.fontHeaderSM,
@@ -42,31 +51,54 @@ const DashGroup = ( props ) => {
 			color: colors.lighter
 		},
 		subtext: {
-			color: color || colors.colorMain,
+			color: color || colors.colorMain
 
 		}
 	}
+
+	if ( nested ) {
+
+		return ( <Dash style={sx.nestedDash} { ...props } >
+
+			{React.Children.map( props.children, ( child, i ) => {
+
+				return ( <Board m={0} style={sx.nestedBoard} >{child}</Board> )
+
+			} )}
+			<Tabs>
+				<TabItem active>
+					BeeAAAAAAAAAAAAAAAAAAAAAp
+				</TabItem>
+				<TabItem>
+					Boop
+				</TabItem>
+				<TabItem>
+					Bop
+				</TabItem>
+			</Tabs>
+			{title && (
+				<Text is='h2' width={1} style={sx.title}>{title}</Text>
+			)}
+			{text && (
+				<Text is='h2' width={1} style={sx.text}>{text}</Text>
+			)}
+			{subtext && (
+				<Text is='h2' width={1} style={sx.subtext}>{subtext}</Text>
+			)}
+		</Dash> )
+
+	}
+
 	return (
 		<Board style={sx.board} { ...props } >
-			{nested && (
-				<div>
-					{title && (
-						<Text is='h2' width={1} style={sx.title}>{title}</Text>
-					)}
-					{text && (
-						<Text is='h2' width={1} style={sx.text}>{text}</Text>
-					)}
-					{subtext && (
-						<Text is='h2' width={1} style={sx.subtext}>{subtext}</Text>
-					)}
-				</div>
-			) || React.Children.map( props.children, ( child, i ) => {
+			{title && (
+				<Text is='h2' width={1} style={sx.title}>{title}</Text>
+			)}
+			{React.Children.map( props.children, ( child, i ) => {
 
-					return ( <Dash m={0} width={[1, 1 / 2, 1 / 2]} style={sx.dash} >{child}</Dash> )
+				return ( <Dash m={0} width={[1, 1 / 2, 1 / 2]} style={sx.dash} >{child}</Dash> )
 
-				}
-				)}
-
+			} )}
 		</Board>
 	)
 

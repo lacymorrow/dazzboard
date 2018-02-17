@@ -212,7 +212,7 @@ class App extends React.Component {
               </Dash>
             </DashGroup>
             <DashGroup>
-              <DashGroup title="Average Man">
+              <DashGroup title="Average Mannno">
                 <Dash
                   title='dist/components/Script.js'
                   text='0 CHUNKS, 1.08 KB'
@@ -240,34 +240,7 @@ class App extends React.Component {
                   {repo.name}
                 </Dash>
               </DashGroup>
-              <DashGroup title="Average Man">
-                <Dash
-                  title='dist/components/Script.js'
-                  text='0 CHUNKS, 1.08 KB'
-                  badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
-                </Dash>
-                <Dash
-                  title='Global Average'
-                  subtitle='160ms RTT'
-                  text='0.4mbps'
-                  subtext='119.06s'
-                  badge={{error: '+114.06s'}}>
-                </Dash>
-                <Dash
-                  title='Hello'>
-                  byyo, World!
-                  {repo.name}
-                </Dash>
-                <Dash
-                  title='Hello'>
-                  cyyo, World!
-                  {repo.name}
-                </Dash>
-                <Dash>
-                  HELLO, World!
-                  {repo.name}
-                </Dash>
-              </DashGroup>
+
             </DashGroup>
           </Board>
 
