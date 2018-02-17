@@ -19,7 +19,7 @@ const Dash = ( props ) => {
 			background: background || dashboardBgMain || '#EEE',
 			padding: ( props.children && !props.padding ) ? '0' : '15px',
 			position: 'relative',
-			// flexFlox: ''
+			margin: '0 0 4px 0'
 		},
 		badgeError: {
 			backgroundColor: colorError,
@@ -58,7 +58,7 @@ const Dash = ( props ) => {
 		}
 	}
 	return (
-		<Box className='dash' m={0} mb={1} width={width || 1} style={sx.dash} { ...props }>
+		<Box className='dash' width={width || 1} style={sx.dash} { ...props }>
 			<Flex wrap>
 				{title && ( <Text is='h4' width={1} style={sx.title}>{title}   { subtitle && (
 					<span style={sx.subtitle}>{subtitle}</span>

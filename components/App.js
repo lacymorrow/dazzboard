@@ -29,26 +29,6 @@ class App extends React.Component {
 				repo: {}
 			}
 		)
-		this.toggle = this.toggle.bind( this )
-		this.handleChange = this.handleChange.bind( this )
-
-	}
-
-	toggle ( key ) {
-
-		return ( e ) => {
-
-			const val = !this.state[key]
-			this.setState( { [key]: val } )
-
-		}
-
-	}
-
-	handleChange ( e ) {
-
-		this.setState( { [e.target.name]: e.target.value } )
-
 	}
 
 	componentDidMount () {
@@ -61,6 +41,22 @@ class App extends React.Component {
 		} ).bind( this )
 
 	}
+
+  demo (ix) {
+    var indents = [];
+    for (var i = 0; i < ix; i++) {
+      indents.push(
+        <Dash
+          title='Global Average'
+          subtitle='160ms RTT'
+          text='0.4mbps'
+          subtext='119.06s'
+          badge={{error: '+114.06s'}}>
+        </Dash>
+      )
+    }
+    return indents;
+  }
 
 	render () {
 
@@ -165,109 +161,6 @@ class App extends React.Component {
 						</DashGroup>
 					</Board>
 					<Board>
-						<DashGroup width={[1, 1, 1, 1 / 2]} title="Average Man!">
-							<Dash
-								title='dist/components/Script.js'
-								text='0 CHUNKS, 1.08 KB'
-								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
-							</Dash>
-							<Dash
-								title='Global Average'
-								subtitle='160ms RTT'
-								text='0.4mbps'
-								subtext='119.06s'
-								badge={{error: '+114.06s'}}>
-							</Dash>
-							<Dash
-								title='Hello'>
-                byyo, World!
-								{repo.name}
-							</Dash>
-              <Dash
-                title='Hello'>
-                cyyo, World!
-                {repo.name}
-              </Dash>
-              <Dash>
-                HELLO, World!
-                {repo.name}
-              </Dash>
-              <Dash
-                title='Hello'>
-                ayyo, World!
-                {repo.name}
-              </Dash>
-              <Dash
-                title='Hello'>
-                byyo, World!
-                {repo.name}
-              </Dash>
-              <Dash
-                title='Hello'>
-                cyyo, World!
-                {repo.name}
-              </Dash>
-              <Dash>
-                HELLO, World!
-                {repo.name}
-              </Dash>
-              <Dash
-                title='Hello'>
-                ayyo, World!
-                {repo.name}
-              </Dash>
-              <Dash
-                title='Hello'>
-                byyo, World!
-                {repo.name}
-              </Dash>
-              <Dash>
-                HELLO, World!
-                {repo.name}
-              </Dash>
-							<Dash
-								title='Hello'>
-                cyyo, World!
-								{repo.name}
-							</Dash>
-							<Dash>
-                HELLO, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                ayyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                byyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                cyyo, World!
-								{repo.name}
-							</Dash>
-							<Dash>
-                HELLO, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                ayyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                byyo, World!
-								{repo.name}
-							</Dash>
-							<Dash>
-                HELLO, World!
-								{repo.name}
-							</Dash>
-						</DashGroup>
 						<DashTabs width={[1, 1, 1, 1/2]}>
 							<DashGroup title="All Modules" text="343" subtext="100%">
 								<Dash
@@ -275,27 +168,7 @@ class App extends React.Component {
 									text='829 MB'
 									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
 								</Dash>
-								<Dash
-									title='Global Average'
-									subtitle='160ms RTT'
-									text='0.4mbps'
-									subtext='119.06s'
-									badge={{error: '+114.06s'}}>
-								</Dash>
-								<Dash
-									title='Hello'>
-                  byyo, World!
-									{repo.name}
-								</Dash>
-								<Dash
-									title='Hello'>
-                  cyyo, World!
-									{repo.name}
-								</Dash>
-								<Dash>
-                  HELLO, World!
-									{repo.name}
-								</Dash>
+                { this.demo(10) }
 							</DashGroup>
 
               <DashGroup title="Treeshakeable" text="6" subtext="2%">
@@ -304,29 +177,17 @@ class App extends React.Component {
                   text='1.08 KB'
                   badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
                 </Dash>
-                <Dash
-                  title='Global Average'
-                  subtitle='160ms RTT'
-                  text='0.4mbps'
-                  subtext='119.06s'
-                  badge={{error: '+114.06s'}}>
-                </Dash>
-                <Dash
-                  title='Hello'>
-                  byyo, World!
-                  {repo.name}
-                </Dash>
-                <Dash
-                  title='Hello'>
-                  cyyo, World!
-                  {repo.name}
-                </Dash>
-                <Dash>
-                  HELLO, World!
-                  {repo.name}
-                </Dash>
+                { this.demo(10) }
               </DashGroup>
 						</DashTabs>
+            <DashGroup width={[1, 1, 1, 1 / 2]} title="Average Man!">
+              <Dash
+                title='dist/components/Script.js'
+                text='0 CHUNKS, 1.08 KB'
+                badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+              </Dash>
+              { this.demo(1) }
+            </DashGroup>
 					</Board>
 				</div>
 			</Layout>

@@ -25,19 +25,12 @@ class DashTabs extends React.Component {
 				activeTab: 0
 			}
 		)
-		this.handleChange = this.handleChange.bind( this )
-
+		this.changeTab = this.changeTab.bind( this )
 	}
 
 	changeTab ( i ) {
 
 		this.setState( { activeTab: i } )
-
-	}
-
-	handleChange ( e ) {
-
-		this.setState( { [e.target.name]: e.target.value } )
 
 	}
 
@@ -52,7 +45,7 @@ class DashTabs extends React.Component {
 				width: '100%',
 				flexGrow: '1',
 				margin: '0 4px 4px 0',
-				overflow: 'none'
+				overflow: 'auto'
 			},
 			board: {
 				maxHeight: height || '455px',
@@ -62,8 +55,7 @@ class DashTabs extends React.Component {
 				justifyContent: 'flex-start',
 				alignItems: 'flex-start',
 				flexDirection: 'column',
-				position: 'relative'
-				// overflowX: 'hidden'
+				flex: '1'
 			},
 			tabs: {
 				background: colors.dashboardBgDarker,
@@ -71,6 +63,8 @@ class DashTabs extends React.Component {
 			},
 			tabItem: {
 				fontSize: fontSizes.fontBodyXS,
+				padding: '8px',
+				margin: '0',
 				marginRight: 'auto'
 			},
 			title: {
@@ -100,8 +94,6 @@ class DashTabs extends React.Component {
 								onClick={ () => this.changeTab( i ) }
 								active={this.state.activeTab === i}
 								width={1}
-								m={0}
-								p={2}
 								style={{ ...sx.tabItem, color: tabItemColor }} >
 								{child.props.title && ( <Text is='h4' width={1} style={sx.title}>{child.props.title}</Text> )}
 								{child.props.text && ( <Text width={1} style={sx.text}>{child.props.text}</Text> )}
@@ -114,7 +106,7 @@ class DashTabs extends React.Component {
 
 				{React.Children.map( this.props.children, ( child, i ) => {
 
-					return ( <Dash className='dashtab' m={0} width={1} style={{ ...sx.dash, display: ( this.state.activeTab === i ) ? 'flex' : 'none' }} >
+					return ( <Dash className='dashtab' width={1} style={{ ...sx.dash, display: ( this.state.activeTab === i ) ? 'flex' : 'none' }} >
 						{child}
 					</Dash> )
 

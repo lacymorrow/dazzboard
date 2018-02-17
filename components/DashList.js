@@ -17,15 +17,15 @@ const DashGroup = ( props ) => {
 	const { color, title, text, subtext } = props
 	const sx = {
 		dash: {
-			flex: '1 1 250px',
+			flex: '1 1 0',
 			margin: '0 4px 4px 0'
 		},
 		board: {
 			background: colors.dashboardBgDarkest,
 			margin: '0 0 4px 0',
 			padding: '0 4px 4px 4px',
-			overflowX: 'hidden',
-			overflowY: 'auto',
+			// overflowX: 'hidden',
+			// overflowY: 'auto',
 			justifyContent: 'space-between',
 			alignItems: 'space-between'
 		},
@@ -49,7 +49,7 @@ const DashGroup = ( props ) => {
 			)}
 			{React.Children.map( props.children, ( child, i ) => {
 
-				return ( <Dash m={0} width={[1, 1 / 2, 1 / 2]} style={sx.dash} >{child}</Dash> )
+				return ( <Dash width={[1, 1 / 2, 1 / 2]} style={sx.dash} >{child}</Dash> )
 
 			} )}
 		</Board>

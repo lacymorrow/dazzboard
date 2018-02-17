@@ -36,7 +36,7 @@ const Card = (props) => {
 		}
 	}
 	return (
-		<Box m={1} style={sx.card} { ...props }>
+		<Box style={sx.card} { ...props }>
 			{title && (
 				<Text is='h4' style={sx.title}>{title}</Text>
 			)}

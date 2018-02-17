@@ -106,8 +106,12 @@ const Layout = (props) => {
 					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 				}
 				
+				.dashgroup {
+					overflow: auto;
+				}
 				.dashtab .dashgroup {
 					position: absolute;
+					overflow: visible;
 				}
 
 				.dashtab .dashgroup__title {
