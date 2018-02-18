@@ -18,8 +18,7 @@ const Dash = ( props ) => {
 			color: colorMain,
 			background: background || dashboardBgMain || '#EEE',
 			padding: ( props.children && !props.padding ) ? '0' : '15px',
-			position: 'relative',
-			margin: '0 0 4px 0'
+			position: 'relative'
 		},
 		badgeError: {
 			backgroundColor: colorError,
@@ -39,8 +38,11 @@ const Dash = ( props ) => {
 			fontSize: props.subtitle ? fontBodyXS : fontBodySM,
 			textTransform: props.subtitle ? 'uppercase' : 'none',
 			color: props.subtitle ? colorMain : lighter,
+			marginBottom: props.subtitle ? '3px' : '0px',
 			fontWeight: '500',
-			paddingBottom: '10px'
+			paddingBottom: '10px',
+			overflow: 'hidden',
+			textOverflow: 'ellipsis'
 		},
 		subtitle: {
 			color: light
@@ -58,9 +60,8 @@ const Dash = ( props ) => {
 		}
 	}
 	return (
-		<Box className='dash' width={width || 1} style={sx.dash} { ...props }>
-			<Flex wrap>
-				{title && ( <Text is='h4' width={1} style={sx.title}>{title}   { subtitle && (
+		<Flex wrap className='dash' width={width || 1} style={sx.dash} { ...props }>
+				{title && ( <Text className="title" is='h4' style={sx.title}>{title}   { subtitle && (
 					<span style={sx.subtitle}>{subtitle}</span>
 				)}</Text> )}
 
@@ -69,7 +70,7 @@ const Dash = ( props ) => {
 				)}</Text> )}
 
 				{badge && (
-					<Box style={{marginLeft: 'auto'}}>
+					<Box className='badge'>
 						{badge.success && (
 							<Button ml={1} mb={1} style={sx.badgeSuccess}>{badge.success.text || badge.success}</Button>
 						)}
@@ -80,10 +81,9 @@ const Dash = ( props ) => {
 				)}
 
 				{props.children && (
-					<Flex width={1}>{props.children}</Flex>
+					<div>{props.children}</div>
 				)}
-			</Flex>
-		</Box>
+		</Flex>
 	)
 
 }

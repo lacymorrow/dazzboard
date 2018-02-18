@@ -8,7 +8,7 @@ import { colors, gradient } from './styles'
 
 const Layout = (props) => {
 	let {title, ...other} = props
-	
+
 	const sx = {
 		app: {
 			margin: '0',
@@ -19,10 +19,10 @@ const Layout = (props) => {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-			// backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
+			backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
 		}
 	}
-	
+
 	return (
 		<Provider
 			theme={{
@@ -35,7 +35,6 @@ const Layout = (props) => {
 
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<meta charSet="utf-8" />
-
 
 					<Script>
 						{() => {
@@ -105,16 +104,51 @@ const Layout = (props) => {
 				::-webkit-scrollbar-thumb :hover {
 					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 				}
-				
-				.dashgroup {
-					overflow: auto;
-				}
-				.dashtab .dashgroup {
-					position: absolute;
-					overflow: visible;
+
+				.dash .badge {
+					margin-left: auto;
 				}
 
-				.dashtab .dashgroup__title {
+				.dash .title{
+					width: 100%;
+				}
+
+				.dashlist .dash{
+					margin: 0;
+				}
+
+				.dashlist .dash .dash {
+					align-content: flex-end;
+					align-items: center;
+				}
+
+				.dashlist .dash .badge {
+					margin-left: 4px;
+				}
+
+				.dashlist .dash .title {
+					padding-right: 8px;
+					margin-right: auto;
+					width: auto;
+				}
+				
+				.dashgroup {
+					background: ${colors.dashboardBgDarkest};
+				}
+
+				.dashgroup .dash{
+					padding: 0 4px 4px 4px;
+				}
+				
+				.dashtab .dashgroup,
+				.dashtab .dashlist {
+					background: ${colors.dashboardBgDarker};
+					position: absolute;
+					overflow: hidden;
+				}
+
+				.dashtab .dashgroup__title,
+				.dashtab .dashlist__title {
 					display: none;
 				}
 			`}</style>

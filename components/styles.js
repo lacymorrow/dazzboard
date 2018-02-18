@@ -67,8 +67,26 @@ export const colors = {
   colorLight: 'hsla(0,0%,100%,.7)',
   colorDark: '#2c2c2c',
   colorError: '#ff4a50',
-  colorSuccess: '#06ffff'
+  colorSuccess: '#06ffff',
+
+  info: '#06ffff',
+  warn: '#f4f469',
+  error: '#f55753',
+  success: '#0df9a3'
 }
+
+export const pallate = [
+  colors.colorData1,
+  colors.colorData3,
+  colors.colorData2,
+  colors.colorData9,
+  colors.colorData10,
+  colors.colorData8,
+  colors.colorData7,
+  colors.colorData4,
+  colors.colorData5,
+  colors.colorData6
+]
 
 export const gradients = {
   fire: gradient(315, 'colorData1', 'colorData2'),
@@ -89,5 +107,6 @@ export default {
   colors,
   fontSizes,
   gradient,
-  gradients
+  gradients,
+  pallate
 }

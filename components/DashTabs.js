@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 import Dash from './Dash'
 import Board from './Board'
 
-import { colors, fontSizes } from './styles'
+import { colors, fontSizes, pallate } from './styles'
 
 class DashTabs extends React.Component {
 
@@ -39,6 +39,7 @@ class DashTabs extends React.Component {
 		const { height, width } = this.props
 		const sx = {
 			dash: {
+				background: colors.dashboardBgDarker,
 				position: 'relative',
 				top: '0',
 				left: '0',
@@ -54,8 +55,7 @@ class DashTabs extends React.Component {
 				padding: '0',
 				justifyContent: 'flex-start',
 				alignItems: 'flex-start',
-				flexDirection: 'column',
-				flex: '1'
+				flexDirection: 'column'
 			},
 			tabs: {
 				background: colors.dashboardBgDarker,
@@ -84,11 +84,10 @@ class DashTabs extends React.Component {
 		return (
 
 			<Board width={width} style={sx.board} { ...this.props } >
-				<Tabs width={1} style={sx.tabs}>
+				<Tabs mb={2} width={1} style={sx.tabs}>
 					{React.Children.map( this.props.children, ( child, i ) => {
 
-						const colorIndex = i % this.props.children.length + 1
-						const tabItemColor = child.props.color || colors['colorData' + colorIndex] || colors.colorData1
+						const tabItemColor = child.props.color || pallate[i % pallate.length] || colors.colorData1
 						return (
 							<TabItem
 								onClick={ () => this.changeTab( i ) }

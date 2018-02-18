@@ -18,13 +18,12 @@ const DashGroup = ( props ) => {
 	const sx = {
 		dash: {
 			flex: '1 1 250px',
-			margin: '0 8px 4px 0',
-			padding: '4px'
+			width: 'auto',
+			maxWidth: '100%'
 		},
 		board: {
-			background: colors.dashboardBgDarkest,
+			overflowX: 'hidden',
 			margin: '0 0 4px 0',
-			padding: '0 4px 4px 4px',
 			justifyContent: 'space-between',
 			alignItems: 'space-between',
 			maxHeight: height || '455px'
@@ -42,7 +41,7 @@ const DashGroup = ( props ) => {
 	return (
 		<Board className='dashgroup' style={sx.board} { ...props } >
 			{title && (
-				<Text className='dashgroup__title' is='h2' width={1} style={sx.title}>{title}</Text>
+				<Text className='dashgroup__title' width={1} is='h2' style={sx.title}>{title}</Text>
 			)}
 			{React.Children.map( props.children, ( child, i ) => {
 

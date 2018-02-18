@@ -16,6 +16,8 @@ import DashList from './DashList'
 import DashTabs from './DashTabs'
 import Dash from './Dash'
 import Board from './Board'
+import Code from './Code'
+
 
 class App extends React.Component {
 
@@ -55,7 +57,7 @@ class App extends React.Component {
         </Dash>
       )
     }
-    return indents;
+    return indents
   }
 
 	render () {
@@ -88,17 +90,14 @@ class App extends React.Component {
 					<Header />
 					<Board>
 						<Flex width={[1, 1, 1, 1 / 4]} height='100%' direction='column'>
-							<Card background={gradients.fire} title='Compiler Status' text='Idle' subtext='done in 0.249 sec' />
-							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
-							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
-						</Flex>
-						<Dash width={[1, 1, 1, 1 / 2]}>
-							<GoogleMapReact
-								style={{height: '100%'}}
-								bootstrapURLKeys={{key: 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro'}}
-								center={{lat: 59.95, lng: 30.33}}
-								zoom={11}
-							/>
+              <Card background={gradients.fire} title='Compiler Status' text='Idle' subtext='done in 0.249 sec' />
+              <Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
+              <Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
+            </Flex>
+            <Dash width={[1, 1, 1, 1 / 2]}>
+              <Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
+              <Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
+              <Code color={colors.success}>Project has been successfully compiled</Code>
 						</Dash>
 						<DashGroup width={[1, 1, 1, 1 / 4]}>
 							<Dash
@@ -106,58 +105,12 @@ class App extends React.Component {
 								text='0 CHUNKS, 1.08 KB'
 								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
 							</Dash>
-							<Dash
-								title='Hello'>
-                ayyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                byyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                cyyo, World!
-								{repo.name}
-							</Dash>
-							<Dash>
-                HELLO, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                ayyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                byyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                cyyo, World!
-								{repo.name}
-							</Dash>
-							<Dash>
-                HELLO, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                ayyo, World!
-								{repo.name}
-							</Dash>
-							<Dash
-								title='Hello'>
-                byyo, World!
-								{repo.name}
-							</Dash>
-							<Dash>
-                HELLO, World!
-								{repo.name}
-							</Dash>
+                <Dash
+                  title='/user/name/random/file/path/dist/components/Script.js'
+                  text='1.08 KB'
+                  badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+                </Dash>
+                { this.demo(10) }
 						</DashGroup>
 					</Board>
 					<Board>
@@ -179,6 +132,32 @@ class App extends React.Component {
                 </Dash>
                 { this.demo(10) }
               </DashGroup>
+
+              <DashList title="Non-Treeshakeable" text="343" subtext="100%">
+                <Dash
+                  title='dist/components/Script.js'
+                  text='829 MB'
+                  badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+                </Dash>
+                <Dash
+                  title='./node_modules/core-js/library/modules/_core.js'
+                  text='122 Bytes'>
+                </Dash>
+                { this.demo(10) }
+              </DashList>
+
+              <DashList title="Mixed Modules" text="3" subtext="10%">
+                <Dash
+                  title='dist/components/Script.js'
+                  text='829 MB'
+                  badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+                </Dash>
+                <Dash
+                  title='./node_modules/core-js/library/modules/_core.js'
+                  text='122 Bytes'>
+                </Dash>
+                { this.demo(10) }
+              </DashList>
 						</DashTabs>
             <DashGroup width={[1, 1, 1, 1 / 2]} title="Average Man!">
               <Dash
@@ -186,7 +165,7 @@ class App extends React.Component {
                 text='0 CHUNKS, 1.08 KB'
                 badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
               </Dash>
-              { this.demo(1) }
+              { this.demo(20) }
             </DashGroup>
 					</Board>
 				</div>

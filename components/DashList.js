@@ -14,20 +14,26 @@ import Board from './Board'
 import { colors, fontSizes } from './styles'
 
 const DashGroup = ( props ) => {
-	const { color, title, text, subtext } = props
+	const { data, color, height, title, text, subtext } = props
 	const sx = {
 		dash: {
-			flex: '1 1 0',
-			margin: '0 4px 4px 0'
+			// flex: '1 1 250px',
+			width: 'auto',
+			maxWidth: '100%',
+			width: '100%',
+			flexDirection: 'row',
+			padding: '0',
+			borderBottom: `2px solid ${colors.dashboardBgDarkest}`
+
 		},
 		board: {
+			overflowX: 'hidden',
 			background: colors.dashboardBgDarkest,
-			margin: '0 0 4px 0',
+			// margin: '0 0 4px 0',
 			padding: '0 4px 4px 4px',
-			// overflowX: 'hidden',
-			// overflowY: 'auto',
 			justifyContent: 'space-between',
-			alignItems: 'space-between'
+			alignItems: 'space-between',
+			maxHeight: height || '455px'
 		},
 		title: {
 			color: colors.colorMain,
@@ -36,20 +42,17 @@ const DashGroup = ( props ) => {
 			textTransform: 'uppercase',
 			fontWeight: '700',
 			margin: '4px'
-		},
-		text: {
-			color: colors.lighter
 		}
 	}
 
 	return (
-		<Board style={sx.board} { ...props } >
+		<Board className='dashlist' style={sx.board} { ...props } >
 			{title && (
-				<Text is='h2' width={1} style={sx.title}>{title}</Text>
+				<Text className='dashlist__title' width={1} is='h2' style={sx.title}>{title}</Text>
 			)}
 			{React.Children.map( props.children, ( child, i ) => {
 
-				return ( <Dash width={[1, 1 / 2, 1 / 2]} style={sx.dash} >{child}</Dash> )
+				return ( <Dash style={sx.dash} >{child}</Dash> )
 
 			} )}
 		</Board>
@@ -58,7 +61,6 @@ const DashGroup = ( props ) => {
 }
 
 DashGroup.propTypes = {
-	height: PropTypes.string || PropTypes.number
 }
 
 export default DashGroup
