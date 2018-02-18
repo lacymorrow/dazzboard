@@ -34,7 +34,8 @@ const DashGroup = ( props ) => {
 			borderBottom: `1px solid ${color || colors.colorSuccess}`,
 			textTransform: 'uppercase',
 			fontWeight: '700',
-			margin: '4px'
+			margin: '4px',
+			paddingBottom: '4px'
 		}
 	}
 

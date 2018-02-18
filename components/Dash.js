@@ -81,7 +81,7 @@ const Dash = ( props ) => {
 				)}
 
 				{props.children && (
-					<div>{props.children}</div>
+					<Flex width={1} direction="column">{props.children}</Flex>
 				)}
 		</Flex>
 	)
