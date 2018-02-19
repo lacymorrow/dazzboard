@@ -110,7 +110,6 @@ const Layout = (props) => {
 					}
 				}
 
-
 				.dash .badge {
 					margin-left: auto;
 				}

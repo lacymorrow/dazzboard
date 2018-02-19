@@ -45,13 +45,13 @@ class App extends React.Component {
 
 	}
 
-	demo ( ix ) {
+	demo ( ix, k ) {
 
 		var els = []
 		for ( var i = 0; i < ix; i++ ) {
 
 			els.push(
-				<Dash
+				<Dash key={k+i}
 					title='Global Average'
 					subtitle='160ms RTT'
 					text='0.4mbps'
@@ -99,12 +99,12 @@ class App extends React.Component {
 							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
 							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
 						</Flex>
-						<Dash className='code' width={[1, 1, 1, 1 / 2]} direction='column'>
+						<Dash className='code' width={[1, 1, 1, 1 / 2]} direction='column' fill='fill'>
 							<Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
 							<Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
 							<Code color={colors.success}>Project has been successfully compiled</Code>
 						</Dash>
-						<Dash width={1/4} style={{marginBottom:'4px'}} >
+						<Dash width={1/4} style={{marginBottom:'2px'}} >
 							<Clock />
 						</Dash>
 						<DashGroup width={[1, 1, 1, 1 / 4]} height='285px'>
@@ -118,7 +118,7 @@ class App extends React.Component {
 								text='1.08 KB'
 								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
 							</Dash>
-							{ this.demo( 10 ) }
+							{ this.demo( 10, 'a' ) }
 						</DashGroup>
 					</Board>
 
@@ -131,7 +131,7 @@ class App extends React.Component {
 									text='829 MB'
 									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
 								</Dash>
-								{ this.demo( 10 ) }
+								{ this.demo( 10, 'b' ) }
 							</DashGroup>
 
 							<DashGroup title="Treeshakeable" text="6" subtext="2%">
@@ -140,7 +140,7 @@ class App extends React.Component {
 									text='1.08 KB'
 									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
 								</Dash>
-								{ this.demo( 10 ) }
+								{ this.demo( 10, 'c' ) }
 							</DashGroup>
 
 							<DashList title="Non-Treeshakeable" text="343" subtext="100%">
@@ -153,7 +153,7 @@ class App extends React.Component {
 									title='./node_modules/core-js/library/modules/_core.js'
 									text='122 Bytes'>
 								</Dash>
-								{ this.demo( 10 ) }
+								{ this.demo( 10, 'd' ) }
 							</DashList>
 
 							<DashList title="Mixed Modules" text="3" subtext="10%">
@@ -166,7 +166,7 @@ class App extends React.Component {
 									title='./node_modules/core-js/library/modules/_core.js'
 									text='122 Bytes'>
 								</Dash>
-								{ this.demo( 10 ) }
+								{ this.demo( 10, 'e' ) }
 							</DashList>
 						</DashTabs>
 						<DashGroup width={[1, 1, 1, 1 / 2]} title="File List">
@@ -175,7 +175,7 @@ class App extends React.Component {
 								text='0 CHUNKS, 1.08 KB'
 								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
 							</Dash>
-							{ this.demo( 20 ) }
+							{ this.demo( 20, 'f' ) }
 						</DashGroup>
 					</Board>
 				</div>

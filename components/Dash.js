@@ -10,7 +10,7 @@ import { colors, fontSizes } from './styles'
 
 const Dash = ( props ) => {
 
-	const { background, basis, direction, fill, width, badge, title, subtitle, text, subtext } = props
+	const { background, direction, fill, width, badge, title, subtitle, text, subtext } = props
 	const { light, lighter, colorDark, colorMain, colorError, colorSuccess, dashboardBgMain } = colors
 	const { fontBodyXS, fontBodySM, fontHeaderXS } = fontSizes
 	const sx = {
@@ -26,16 +26,16 @@ const Dash = ( props ) => {
 		},
 		badgeError: {
 			backgroundColor: colorError,
+			fontSize: fontHeaderXS,
 			color: colorMain,
 			borderRadius: '2px',
-			fontSize: fontHeaderXS,
 			fontWeight: '700'
 		},
 		badgeSuccess: {
 			backgroundColor: colorSuccess,
+			fontSize: fontHeaderXS,
 			color: colorDark,
 			borderRadius: '2px',
-			fontSize: fontHeaderXS,
 			fontWeight: '300'
 		},
 		title: {
@@ -64,29 +64,35 @@ const Dash = ( props ) => {
 		}
 	}
 	return (
-		<Flex wrap className='dash' width={width || ''} style={sx.dash} { ...props }>
-				{title && ( <Text className="title" is='h4' style={sx.title}>{title}   { subtitle && (
-					<span style={sx.subtitle}>{subtitle}</span>
-				)}</Text> )}
+		<Flex className='dash' width={width || ''} style={sx.dash} { ...props } wrap>
+			{title && ( <Text className="title" is='h4' style={sx.title}>{title}   { subtitle && (
+				<span style={sx.subtitle}>{subtitle}</span>
+			)}</Text> )}
 
-				{text && ( <Text is='h5' style={sx.text}>{text}   { subtext && (
-					<span style={sx.subtext}>{subtext}</span>
-				)}</Text> )}
+			{text && ( <Text is='h5' style={sx.text}>{text}   { subtext && (
+				<span style={sx.subtext}>{subtext}</span>
+			)}</Text> )}
 
-				{badge && (
-					<Box className='badge'>
-						{badge.success && (
-							<Button ml={1} mb={1} style={sx.badgeSuccess}>{badge.success.text || badge.success}</Button>
-						)}
-						{badge.error && (
-							<Button ml={1} mb={1} style={sx.badgeError}>{badge.error.text || badge.error}</Button>
-						)}
-					</Box>
-				)}
+			{badge && (
+				<Box className='badge'>
+					{badge.success && (
+						<Button ml={1} mb={1} style={sx.badgeSuccess}>{badge.success.text || badge.success}</Button>
+					)}
+					{badge.error && (
+						<Button ml={1} mb={1} style={sx.badgeError}>{badge.error.text || badge.error}</Button>
+					)}
+				</Box>
+			)}
 
-				{props.children && (
-					<Flex style={sx.child}>{props.children}</Flex>
-				)}
+			{props.children && (
+				<Flex style={sx.child}>
+					{React.Children.map( props.children, ( child, i ) => {
+
+						return child
+
+					} )}
+				</Flex>
+			)}
 		</Flex>
 	)
 
