@@ -89,10 +89,6 @@ const Layout = (props) => {
 					margin: 0;
 				}
 
-				::-webkit-scrollbar {
-					width: 16px;
-				}
-
 				::-webkit-scrollbar-thumb {
 					border: 5px solid transparent;
 					background-clip: padding-box;
@@ -104,6 +100,16 @@ const Layout = (props) => {
 				::-webkit-scrollbar-thumb :hover {
 					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 				}
+
+				@media (min-width: 1024px) {
+					.board {
+						max-height: 355px;
+					}
+					[fill] {
+						flex-basis: 100%;
+					}
+				}
+
 
 				.dash .badge {
 					margin-left: auto;
@@ -157,6 +163,12 @@ const Layout = (props) => {
 				.dashtab .dashlist__title {
 					display: none;
 				}
+
+				/* DEMO */
+				.clock {
+					font-weight: 100;
+				}
+
 			`}</style>
 		</Provider>
 	)

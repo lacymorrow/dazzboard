@@ -63,7 +63,7 @@ class DashTabs extends React.Component {
 				marginRight: 'auto'
 			},
 			tabContainer: {
-				height: '200px',
+				height: '175px'
 			},
 			title: {
 				color: colors.colorMain,
@@ -100,7 +100,7 @@ class DashTabs extends React.Component {
 
 					} )}
 				</Tabs>
-				<div className='tabContainer' style={sx.tabContainer}>
+				<Box className='tabContainer' height={'200px'} style={sx.tabContainer}>
 					{React.Children.map( this.props.children, ( child, i ) => {
 
 						return ( <Dash className='dashtab' width={1} style={{ ...sx.dash, display: ( this.state.activeTab === i ) ? 'flex' : 'none' }} >
@@ -108,7 +108,7 @@ class DashTabs extends React.Component {
 						</Dash> )
 
 					} )}
-				</div>
+				</Box>
 			</Board>
 		)
 

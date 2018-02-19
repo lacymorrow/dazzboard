@@ -7,7 +7,7 @@ const Board = ( props ) => {
 		margin: '4px 0',
 		alignItems: 'flex-start',
 		flexFlow: 'column wrap',
-		maxHeight: props.height || '355px'
+		// maxHeight: props.height || '355px'
 	}
 	return (
 		<Flex className='board' width={1} style={sx} wrap { ...props }>

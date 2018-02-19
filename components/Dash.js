@@ -18,8 +18,7 @@ const Dash = ( props ) => {
 			alignSelf: fill ? 'stretch' : 'initial',
 			color: colorMain,
 			background: background || dashboardBgMain || '#EEE',
-			padding: props.children && !props.padding ? '0' : '15px',
-			flexBasis: basis || ( fill ? '100%' : 'auto' )
+			padding: props.children && !props.padding ? '0' : '15px'
 		},
 		child: {
 			flexDirection: direction === 'column' ? 'column' : 'row',
