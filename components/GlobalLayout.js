@@ -124,6 +124,7 @@ const Layout = (props) => {
 				.dashlist .dash .dash {
 					align-content: flex-end;
 					align-items: center;
+					width: 100%;
 				}
 
 				.dashlist .dash .badge {
@@ -142,6 +143,7 @@ const Layout = (props) => {
 
 				.dashgroup .dash{
 					padding: 0 4px 4px 4px;
+					width: 100%;
 				}
 				
 				.dashtab .dashgroup,

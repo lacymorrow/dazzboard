@@ -99,12 +99,12 @@ class App extends React.Component {
 							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
 							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
 						</Flex>
-						<Dash width={[1, 1, 1, 1 / 2]} fill direction='column'>
+						<Dash width={[1, 1, 1, 1 / 2]} basis='100%' direction='column' fill>
 							<Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
 							<Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
 							<Code color={colors.success}>Project has been successfully compiled</Code>
 						</Dash>
-						<Dash width={1/4} basis='20%' >
+						<Dash width={1/4} basis='20%' style={{marginBottom:'4px'}} >
 							<Clock />
 						</Dash>
 						<DashGroup width={[1, 1, 1, 1 / 4]} basis='80%'>

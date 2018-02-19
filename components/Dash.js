@@ -16,10 +16,10 @@ const Dash = ( props ) => {
 	const sx = {
 		dash: {
 			alignSelf: fill ? 'stretch' : 'initial',
-			flexBasis: basis || (fill ? '100%' : 'auto'),
 			color: colorMain,
 			background: background || dashboardBgMain || '#EEE',
-			padding: props.children && !props.padding ? '0' : '15px'
+			padding: props.children && !props.padding ? '0' : '15px',
+			flexBasis: basis || ( fill ? '100%' : 'auto' )
 		},
 		child: {
 			flexDirection: direction === 'column' ? 'column' : 'row',
