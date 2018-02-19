@@ -29,7 +29,7 @@ $ npm run dev
 
 `npm start`
 
-_Opens at [localhost: 3000](http://localhost:3000/)_
+_Opens at [localhost:3000](http://localhost:3000/)_
 
 <!-- Using [NPM](https://npmjs.com):
 

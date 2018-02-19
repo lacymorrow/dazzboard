@@ -57,6 +57,6 @@ typings/
 
 # dotenv environment variables file
 .env
-
+secrets.js
 .next
 out

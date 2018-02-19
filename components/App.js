@@ -2,6 +2,8 @@
 // DEMO
 import GoogleMapReact from 'google-map-react'
 import zipcodes from 'zipcodes'
+// import ys from 'yahoo-stocks'
+// import LYQL from 'lyql'
 
 import jsonp from 'jsonp'
 import assign from 'object-assign'
@@ -18,17 +20,22 @@ import DashTabs from './DashTabs'
 import Dash from './Dash'
 import Board from './Board'
 import Code from './Code'
-import Clock from './Clock'
+import Clock from './elements/Clock'
+import Ticker from './elements/Ticker'
+
+import {ALPHA_VANTAGE_KEY} from '../secrets'
 
 class App extends React.Component {
 
 	constructor ( props ) {
 
 		super( props )
+		console.log( 'key', ALPHA_VANTAGE_KEY )
 		this.state = assign(
 			{},
 			{
 				drawerOpen: false,
+				ticker: {},
 				repo: {},
 				zip: {}
 			}
@@ -38,6 +45,7 @@ class App extends React.Component {
 
 	componentDidMount () {
 
+		// Github
 		jsonp( 'https://api.github.com/repos/jxnblk/rebass', ( err, response ) => {
 
 			this.setState( { repo: response.data } )
@@ -45,7 +53,13 @@ class App extends React.Component {
 
 		} ).bind( this )
 
+		// Map
 		this.setState( {zip: zipcodes.lookup( 94115 ) } )
+
+
+
+		// Stocks
+
 
 	}
 
@@ -55,7 +69,7 @@ class App extends React.Component {
 		for ( var i = 0; i < ix; i++ ) {
 
 			els.push(
-				<Dash key={k+i}
+				<Dash key={k + i}
 					title='Global Average'
 					subtitle='160ms RTT'
 					text='0.4mbps'
@@ -117,10 +131,17 @@ class App extends React.Component {
 							/>
 						</Dash>
 
-						<Dash width={1/4} style={{marginBottom:'2px'}} >
+						<Dash width={1 / 4} style={{marginBottom: '2px'}} >
 							<Clock />
 						</Dash>
-						<DashGroup width={[1, 1, 1, 1 / 4]} height='285px'>
+
+						<Dash 
+						width={1 / 4} 
+						style={{marginBottom: '2px'}} >
+							<Ticker />
+						</Dash>
+
+						<DashGroup width={[1, 1, 1, 1 / 4]} height='185px'>
 							<Dash
 								title='dist/components/Script.js'
 								text='0 CHUNKS, 1.08 KB'
