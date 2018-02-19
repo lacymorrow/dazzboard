@@ -116,12 +116,12 @@ class App extends React.Component {
 							<Dash
 								title='dist/components/Script.js'
 								text='0 CHUNKS, 1.08 KB'
-								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+								badge={{ success: {text: 'OK', link: '#'}}}>
 							</Dash>
 							<Dash
 								title='/user/name/random/file/path/dist/components/Script.js'
 								text='1.08 KB'
-								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+								badge={{ success: {text: 'OK', link: '#'}}}>
 							</Dash>
 							{ this.demo( 10, 'a' ) }
 						</DashGroup>
@@ -134,7 +134,7 @@ class App extends React.Component {
 								<Dash
 									title='dist/components/Script.js'
 									text='829 MB'
-									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+									badge={{ success: {text: 'OK', link: '#'} }}>
 								</Dash>
 								{ this.demo( 10, 'b' ) }
 							</DashGroup>
