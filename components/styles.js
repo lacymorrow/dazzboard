@@ -1,7 +1,8 @@
 const cx = key => colors[key] || key
-const gradient = (n, from, to) => `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
 
-const colors = {
+export const gradient = (n, from, to) => `linear-gradient(${n}deg, ${cx(from)}, ${cx(to)})`
+
+export const colors = {
   cyan: '#0ff',
   blue: '#08f',
   violet: '#80f',
@@ -39,8 +40,8 @@ const colors = {
   dashboardBgLightest: '#fff',
   dashboardBgLighter: '#2d3759',
   dashboardBgMain: '#1c2237',
-  dashboardBgDarker: '#141a2e',
-  dashboardBgDarkest: '#171d31',
+  dashboardBgDarker: '#171d31',
+  dashboardBgDarkest: '#141a2e',
   dashboardShadows: 'rgba(37,45,71,.34)',
   // orange
   colorData1: '#fb906f',
@@ -66,25 +67,46 @@ const colors = {
   colorLight: 'hsla(0,0%,100%,.7)',
   colorDark: '#2c2c2c',
   colorError: '#ff4a50',
-  colorSuccess: '#06ffff'
+  colorSuccess: '#06ffff',
+
+  info: '#06ffff',
+  warn: '#f4f469',
+  error: '#f55753',
+  success: '#0df9a3'
 }
 
-const gradients = {
-  fire: gradient(315, colors.colorData1, colors.colorData2),
-  evening: gradient(315, colors.colorData3, colors.colorData4),
-  berry: gradient(315, colors.colorData5, colors.colorData6)
+export const pallate = [
+  colors.colorData1,
+  colors.colorData3,
+  colors.colorData2,
+  colors.colorData9,
+  colors.colorData10,
+  colors.colorData8,
+  colors.colorData7,
+  colors.colorData4,
+  colors.colorData5,
+  colors.colorData6
+]
+
+export const gradients = {
+  fire: gradient(315, 'colorData1', 'colorData2'),
+  evening: gradient(315, 'colorData3', 'colorData4'),
+  berry: gradient(315, 'colorData5', 'colorData6'),
+  sunset: gradient(120, 'magenta', 'violet')
 }
 
-const fontSizes {
+export const fontSizes = {
   fontBodyXS: '12px',
   fontBodySM: '14px',
   fontHeaderXS: '11px',
-  fontHeaderSM: '12px'
+  fontHeaderSM: '12px',
+  fontHeaderLG: '27px'
 }
 
 export default {
   colors,
   fontSizes,
   gradient,
-  gradients
+  gradients,
+  pallate
 }

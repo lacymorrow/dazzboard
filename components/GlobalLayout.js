@@ -1,28 +1,37 @@
 import { Provider } from 'rebass'
 import Head from 'next/head'
-import Header from './Header'
 import Footer from './Footer'
 import Script from './Script'
 
 import { colors, gradient } from './styles'
 
-const sx = {
-	layout: {
-		color: '#222'
-	}
-}
 
 const Layout = (props) => {
 	let {title, ...other} = props
+
+	const sx = {
+		app: {
+			margin: '0',
+			padding: '40px',
+			width: '100%',
+			minHeight: '100vh',
+			position: 'relative',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
+		}
+	}
+
 	return (
 		<Provider
 			theme={{
-				font: '"Avenir Next", Helvetica, sans-serif',
+				font: '"Montserrat", "Avenir Next", Helvetica, sans-serif',
 				fontSizes: [12, 16, 24, 36, 48, 72]
 			}}>
-			<div style={sx.layout}>
+			<div>
 				<Head>
-					<title>{props.title || 'Init Next'}</title>
+					<title>Dashes</title>
 
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<meta charSet="utf-8" />
@@ -30,32 +39,135 @@ const Layout = (props) => {
 					<Script>
 						{() => {
 							// any arbitrary js
-							console.log(`init-next loaded`)
+							console.log(`dashes loaded`)
 						}}
 					</Script>
 				</Head>
-				<Header {...other} />
-
-				{props.children}
-
-				<Footer />
+				<div style={sx.app}>
+					{props.children}
+				</div>
 			</div>
 
 			{/* global app styles */}
 			<style global jsx>{`
+				* {
+				  box-sizing: border-box;
+				}
+
+				html {
+					text-rendering: optimizeLegibility;
+					--webkit-font-smoothing: antialiased;
+
+				}
+				
+				a {
+				  text-decoration: none;
+				}
+
+				a:active,
+				a:hover {
+				  outline: 0;
+				}
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6,
+				p {
+				  padding: 0;
+				  margin: 0;
+				}
+
+				ul {
+				  padding: 0;
+				  list-style-type: none;
+				}
+
 				body {
-					background: white;
 					margin: 0;
 				}
-				a {
-					padding: 16px;
-					text-decoration: none;
-					color: inherit;
-					letter-spacing: 2.4px;
-					text-transform: uppercase;
-					font-size: 12px;
-					font-weight: 700;
+
+				::-webkit-scrollbar-thumb {
+					border: 5px solid transparent;
+					background-clip: padding-box;
+					padding: 2px;
+					border-radius: 8px;
+					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 				}
+
+				::-webkit-scrollbar-thumb :hover {
+					box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+				}
+
+				@media (min-width: 1024px) {
+					.board {
+						max-height: 355px;
+					}
+					[fill] {
+						flex-basis: 100%;
+					}
+				}
+
+				.dash .badge {
+					margin-left: auto;
+				}
+
+				.dash .title{
+					width: 100%;
+				}
+
+				.dash__component div {
+					display: inline-block;
+				}
+
+				.dashlist .dash{
+					margin: 0;
+				}
+
+				.dashlist .dash .dash {
+					align-content: flex-end;
+					align-items: center;
+					width: 100%;
+				}
+
+				.dashlist .dash .badge {
+					margin-left: 4px;
+				}
+
+				.dashlist .dash .title {
+					padding-right: 8px;
+					margin-right: auto;
+					width: auto;
+				}
+				
+				.dashgroup {
+					background: ${colors.dashboardBgDarkest};
+				}
+
+				.dashgroup .dash{
+					padding: 0 4px 4px 4px;
+					width: 100%;
+				}
+				
+				.dashtab .dashgroup,
+				.dashtab .dashlist {
+					background: ${colors.dashboardBgDarker};
+					position: absolute;
+					overflow: hidden;
+				}
+
+				.dashtab .dashgroup__title,
+				.dashtab .dashlist__title {
+					display: none;
+				}
+
+				/* DEMO */
+				.clock {
+					font-weight: 100;
+				}
+
 			`}</style>
 		</Provider>
 	)

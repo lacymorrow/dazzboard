@@ -1,24 +1,23 @@
-/* Libraries */
-// Universal fetch API
-import fetch from 'isomorphic-unfetch'
-
-/* Next Components */
-import Link from 'next/link'
-
-/* Custom Components */
+/* App Entry Point */
 import App from '../components/App'
-import Layout from '../components/GlobalLayout'
-import Widget from '../components/Widget'
 
 // Renders the main app page
-const Index = () => {
-	return (
-		<App />
-	)
-}
+class Index extends React.Component {
 
-Index.getInitialProps = async function(context) {
-	return {title: 'Init Next'}
+	static async getInitialProps ( context ) {
+
+		return {title: 'Init Next'}
+
+	}
+
+	render () {
+
+		return (
+			<App />
+		)
+
+	}
+
 }
 
 export default Index
