@@ -1,6 +1,7 @@
 
 // DEMO
 import GoogleMapReact from 'google-map-react'
+import zipcodes from 'zipcodes'
 
 import jsonp from 'jsonp'
 import assign from 'object-assign'
@@ -28,7 +29,8 @@ class App extends React.Component {
 			{},
 			{
 				drawerOpen: false,
-				repo: {}
+				repo: {},
+				zip: {}
 			}
 		)
 
@@ -42,6 +44,8 @@ class App extends React.Component {
 			console.log( response.data )
 
 		} ).bind( this )
+
+		this.setState( {zip: zipcodes.lookup( 94115 ) } )
 
 	}
 
@@ -99,11 +103,12 @@ class App extends React.Component {
 							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
 							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
 						</Flex>
-						<Dash className='code' width={[1, 1, 1, 1 / 2]} direction='column' fill='fill'>
+						<Dash className='code' width={[1, 1, 1, 1 / 2]} direction='column' fill='1'>
 							<Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
 							<Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
 							<Code color={colors.success}>Project has been successfully compiled</Code>
 						</Dash>
+
 						<Dash width={1/4} style={{marginBottom:'2px'}} >
 							<Clock />
 						</Dash>
