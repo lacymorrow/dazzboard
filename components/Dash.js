@@ -10,15 +10,20 @@ import { colors, fontSizes } from './styles'
 
 const Dash = ( props ) => {
 
-	const { background, width, badge, title, subtitle, text, subtext } = props
+	const { background, basis, direction, fill, width, badge, title, subtitle, text, subtext } = props
 	const { light, lighter, colorDark, colorMain, colorError, colorSuccess, dashboardBgMain } = colors
 	const { fontBodyXS, fontBodySM, fontHeaderXS } = fontSizes
 	const sx = {
 		dash: {
+			alignSelf: fill ? 'stretch' : 'initial',
+			flexBasis: basis || (fill ? '100%' : 'auto'),
 			color: colorMain,
 			background: background || dashboardBgMain || '#EEE',
-			padding: ( props.children && !props.padding ) ? '0' : '15px',
-			position: 'relative'
+			padding: props.children && !props.padding ? '0' : '15px'
+		},
+		child: {
+			flexDirection: direction === 'column' ? 'column' : 'row',
+			width: '100%'
 		},
 		badgeError: {
 			backgroundColor: colorError,
@@ -35,10 +40,10 @@ const Dash = ( props ) => {
 			fontWeight: '300'
 		},
 		title: {
-			fontSize: props.subtitle ? fontBodyXS : fontBodySM,
-			textTransform: props.subtitle ? 'uppercase' : 'none',
-			color: props.subtitle ? colorMain : lighter,
-			marginBottom: props.subtitle ? '3px' : '0px',
+			fontSize: subtitle ? fontBodyXS : fontBodySM,
+			textTransform: subtitle ? 'uppercase' : 'none',
+			color: subtitle ? colorMain : lighter,
+			marginBottom: subtitle ? '3px' : '0px',
 			fontWeight: '500',
 			paddingBottom: '10px',
 			overflow: 'hidden',
@@ -60,7 +65,7 @@ const Dash = ( props ) => {
 		}
 	}
 	return (
-		<Flex wrap className='dash' width={width || 1} style={sx.dash} { ...props }>
+		<Flex wrap className='dash' width={width || ''} style={sx.dash} { ...props }>
 				{title && ( <Text className="title" is='h4' style={sx.title}>{title}   { subtitle && (
 					<span style={sx.subtitle}>{subtitle}</span>
 				)}</Text> )}
@@ -81,7 +86,7 @@ const Dash = ( props ) => {
 				)}
 
 				{props.children && (
-					<Flex width={1} direction="column">{props.children}</Flex>
+					<Flex style={sx.child}>{props.children}</Flex>
 				)}
 		</Flex>
 	)

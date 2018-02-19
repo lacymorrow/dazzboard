@@ -17,23 +17,21 @@ const DashGroup = ( props ) => {
 	const { data, color, height, title, text, subtext } = props
 	const sx = {
 		dash: {
-			// flex: '1 1 250px',
 			width: 'auto',
 			maxWidth: '100%',
 			width: '100%',
-			flexDirection: 'row',
 			padding: '0',
 			borderBottom: `2px solid ${colors.dashboardBgDarkest}`
 
 		},
 		board: {
-			overflowX: 'hidden',
 			background: colors.dashboardBgDarkest,
-			// margin: '0 0 4px 0',
+			maxHeight: height || '100%',
+			overflowX: 'hidden',
+			overflowY: 'auto',
 			padding: '0 4px 4px 4px',
 			justifyContent: 'space-between',
-			alignItems: 'space-between',
-			maxHeight: height || '455px'
+			alignItems: 'space-between'
 		},
 		title: {
 			color: colors.colorMain,

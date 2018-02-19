@@ -16,9 +16,9 @@ import { colors, fontSizes, pallate } from './styles'
 
 class DashTabs extends React.Component {
 
-	constructor () {
+	constructor (props) {
 
-		super()
+		super(props)
 		this.state = assign(
 			{},
 			{
@@ -40,17 +40,12 @@ class DashTabs extends React.Component {
 		const sx = {
 			dash: {
 				background: colors.dashboardBgDarker,
-				position: 'relative',
-				top: '0',
-				left: '0',
-				width: '100%',
-				flexGrow: '1',
 				margin: '0 4px 4px 0',
-				overflow: 'auto'
+				height: '100%'
 			},
 			board: {
-				maxHeight: height || '455px',
 				background: colors.dashboardBgDarker,
+				position: 'relative',
 				margin: '0',
 				padding: '0',
 				justifyContent: 'flex-start',
@@ -66,6 +61,9 @@ class DashTabs extends React.Component {
 				padding: '8px',
 				margin: '0',
 				marginRight: 'auto'
+			},
+			tabContainer: {
+				height: '200px',
 			},
 			title: {
 				color: colors.colorMain,
@@ -102,14 +100,15 @@ class DashTabs extends React.Component {
 
 					} )}
 				</Tabs>
+				<div className='tabContainer' style={sx.tabContainer}>
+					{React.Children.map( this.props.children, ( child, i ) => {
 
-				{React.Children.map( this.props.children, ( child, i ) => {
+						return ( <Dash className='dashtab' width={1} style={{ ...sx.dash, display: ( this.state.activeTab === i ) ? 'flex' : 'none' }} >
+							{child}
+						</Dash> )
 
-					return ( <Dash className='dashtab' width={1} style={{ ...sx.dash, display: ( this.state.activeTab === i ) ? 'flex' : 'none' }} >
-						{child}
-					</Dash> )
-
-				} )}
+					} )}
+				</div>
 			</Board>
 		)
 

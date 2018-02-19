@@ -2,14 +2,22 @@
 import App from '../components/App'
 
 // Renders the main app page
-const Index = () => {
-	return (
-		<App />
-	)
-}
+class Index extends React.Component {
 
-Index.getInitialProps = async function(context) {
-	return {title: 'Init Next'}
+	static async getInitialProps ( context ) {
+
+		return {title: 'Init Next'}
+
+	}
+
+	render () {
+
+		return (
+			<App />
+		)
+
+	}
+
 }
 
 export default Index

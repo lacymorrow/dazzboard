@@ -14,7 +14,7 @@ import Board from './Board'
 import { colors, fontSizes } from './styles'
 
 const DashGroup = ( props ) => {
-	const { data, color, height, title, text, subtext } = props
+	const { basis, color, height, title } = props
 	const sx = {
 		dash: {
 			flex: '1 1 250px',
@@ -22,11 +22,12 @@ const DashGroup = ( props ) => {
 			maxWidth: '100%'
 		},
 		board: {
+			maxHeight: height || '100%',
+			flexBasis: basis || 'auto',
 			overflowX: 'hidden',
-			margin: '0 0 4px 0',
+			overflowY: 'auto',
 			justifyContent: 'space-between',
-			alignItems: 'space-between',
-			maxHeight: height || '455px'
+			alignItems: 'flex-start'
 		},
 		title: {
 			color: colors.colorMain,

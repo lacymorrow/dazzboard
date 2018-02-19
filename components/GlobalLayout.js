@@ -113,6 +113,10 @@ const Layout = (props) => {
 					width: 100%;
 				}
 
+				.dash__component div {
+					display: inline-block;
+				}
+
 				.dashlist .dash{
 					margin: 0;
 				}
