@@ -14,7 +14,7 @@ import Board from './Board'
 import { colors, fontSizes } from './styles'
 
 const DashGroup = ( props ) => {
-	const { data, color, height, title, text, subtext } = props
+	const { color, height, title } = props
 	const sx = {
 		dash: {
 			width: 'auto',

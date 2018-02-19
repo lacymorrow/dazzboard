@@ -8,11 +8,11 @@ import { colors, fontSizes } from './styles'
 
 const Card = (props) => {
 	const {background, title, text, subtext} = props
-	const { colorDark, colorMain } = colors
+	const { colorData1, colorDark, colorMain } = colors
 	const { fontBodyXS, fontHeaderLG } = fontSizes
 	const sx = {
 		card: {
-			background: background || '#EEE',
+			background: background || colorData1,
 			padding: (props.children && !props.padding) ? '0' : '20px',
 			flexGrow: '1',
 			margin: '0 4px 4px 4px'
