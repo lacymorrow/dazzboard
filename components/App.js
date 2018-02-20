@@ -5,8 +5,9 @@ import zipcodes from 'zipcodes'
 // import ys from 'yahoo-stocks'
 // import LYQL from 'lyql'
 
+
+import fetch from 'isomorphic-unfetch'
 import jsonp from 'jsonp'
-import assign from 'object-assign'
 import PropTypes from 'prop-types'
 import { Flex } from 'rebass'
 
@@ -21,7 +22,6 @@ import Dash from './Dash'
 import Board from './Board'
 import Code from './Code'
 import Clock from './elements/Clock'
-import Ticker from './elements/Ticker'
 
 import {ALPHA_VANTAGE_KEY} from '../secrets'
 
@@ -31,16 +31,13 @@ class App extends React.Component {
 
 		super( props )
 		console.log( 'key', ALPHA_VANTAGE_KEY )
-		this.state = assign(
-			{},
+		this.state =
 			{
 				drawerOpen: false,
 				ticker: {},
 				repo: {},
 				zip: {}
 			}
-		)
-
 	}
 
 	componentDidMount () {
@@ -56,10 +53,18 @@ class App extends React.Component {
 		// Map
 		this.setState( {zip: zipcodes.lookup( 94115 ) } )
 
+		// jsonp('https://autoc.finance.yahoo.com/autoc?query=aapl&region=1&lang=en', {param: 'l', prefix: 'j'},  ( err, response ) => {
+		// 	if(err) console.log('!!!', err);
+		// 	console.log( '!!!', response.data )
+		// 	this.setState( { ticker: response.data } )
 
-
+		// } ).bind( this )
 		// Stocks
-
+		// fetch( 'https://autoc.finance.yahoo.com/autoc?query=aapl&region=1&lang=en', {method: 'GET', 'contype':'application/json', headers: {'content-type': 'application/json'}})
+		// .then(res => {
+		// 	console.log('asd',res)
+		// 	this.setState({ticker: res})
+		// })
 
 	}
 
@@ -113,7 +118,7 @@ class App extends React.Component {
 					<Header />
 					<Board>
 						<Flex width={[1, 1, 1, 1 / 4]} direction='column'>
-							<Card title='Compiler Status' text='Idle' subtext='done in 0.249 sec' />
+							<Card background={gradients.fire} title='Compiler Status' text='Idle' subtext='done in 0.249 sec' />
 							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
 							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
 						</Flex>
@@ -132,16 +137,10 @@ class App extends React.Component {
 						</Dash>
 
 						<Dash width={1 / 4} style={{marginBottom: '2px'}} >
-							<Clock />
+							<Clock color={gradients.sunset} />
 						</Dash>
 
-						<Dash 
-						width={1 / 4} 
-						style={{marginBottom: '2px'}} >
-							<Ticker />
-						</Dash>
-
-						<DashGroup width={[1, 1, 1, 1 / 4]} height='185px'>
+						<DashGroup width={[1, 1, 1, 1 / 4]} height='285px'>
 							<Dash
 								title='dist/components/Script.js'
 								text='0 CHUNKS, 1.08 KB'
@@ -179,8 +178,7 @@ class App extends React.Component {
 							<DashList title="Non-Treeshakeable" text="343" subtext="100%">
 								<Dash
 									title='dist/components/Script.js'
-									text='829 MB'
-									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+									text='829 MB' >
 								</Dash>
 								<Dash
 									title='./node_modules/core-js/library/modules/_core.js'

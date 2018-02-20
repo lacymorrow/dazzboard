@@ -63,7 +63,7 @@ class DashTabs extends React.Component {
 				marginRight: 'auto'
 			},
 			tabContainer: {
-				height: height || '175px'
+				height: height || '205px'
 			},
 			title: {
 				color: colors.colorMain,

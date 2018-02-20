@@ -59,19 +59,24 @@ class Clock extends React.Component {
       this.setState({
         currentTime: new Date()
       }, this.updateTime);
-    })
+    }, 500)
   }
 
   render() {
+    const { color } = this.props
     const { currentTime } = this.state
-    const hour = currentTime.getHours();
-    const minute = currentTime.getMinutes();
-    const second = currentTime.getSeconds();
-
+    console.log(color)
+    const hour = currentTime.getHours()
+    const minute = currentTime.getMinutes()
+    const second = currentTime.getSeconds()
     const sx = {
       fontSize: '48px',
       width: '100%',
-      textAlign: 'center'
+      textAlign: 'center',
+      backgroundImage: color || '#FFF',
+      backgroundClip: 'text',
+      color: 'transparent',
+      WebkitBackgroundClip: 'text',
     }
 
     return (
