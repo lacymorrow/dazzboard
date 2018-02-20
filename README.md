@@ -4,8 +4,12 @@
 
 
 ## Features
- * Built with React. Use any React component as a dashboard object 🏰
- * Server-rendered with Next.js 🚀
+ * Built with React. Use any React component as a dashboard object 🍡
+ * Pre-cooked on the server for instant page loads with SSR 🍳
+ * Includes basic components to fill your first board 🍇
+
+
+[![Dashes](https://raw.githubusercontent.com/lacymorrow/dashes/master/static/screenshot.png)](https://github.com/lacymorrow/dashes)
 
 
 ## Install
