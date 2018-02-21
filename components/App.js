@@ -22,6 +22,7 @@ import Dash from './Dash'
 import Board from './Board'
 import Code from './Code'
 import Clock from './elements/Clock'
+import Ticker from './elements/Ticker'
 
 import {ALPHA_VANTAGE_KEY} from '../secrets'
 
@@ -52,19 +53,6 @@ class App extends React.Component {
 
 		// Map
 		this.setState( {zip: zipcodes.lookup( 94115 ) } )
-
-		// jsonp('https://autoc.finance.yahoo.com/autoc?query=aapl&region=1&lang=en', {param: 'l', prefix: 'j'},  ( err, response ) => {
-		// 	if(err) console.log('!!!', err);
-		// 	console.log( '!!!', response.data )
-		// 	this.setState( { ticker: response.data } )
-
-		// } ).bind( this )
-		// Stocks
-		// fetch( 'https://autoc.finance.yahoo.com/autoc?query=aapl&region=1&lang=en', {method: 'GET', 'contype':'application/json', headers: {'content-type': 'application/json'}})
-		// .then(res => {
-		// 	console.log('asd',res)
-		// 	this.setState({ticker: res})
-		// })
 
 	}
 
@@ -140,18 +128,13 @@ class App extends React.Component {
 							<Clock color={gradients.sunset} />
 						</Dash>
 
+						
+
 						<DashGroup width={[1, 1, 1, 1 / 4]} height='285px'>
-							<Dash
-								title='dist/components/Script.js'
-								text='0 CHUNKS, 1.08 KB'
-								badge={{ success: {text: 'OK', link: '#'}}}>
-							</Dash>
-							<Dash
-								title='/user/name/random/file/path/dist/components/Script.js'
-								text='1.08 KB'
-								badge={{ success: {text: 'OK', link: '#'}}}>
-							</Dash>
-							{ this.demo( 10, 'a' ) }
+							<Ticker width={1 / 2} background={gradients.fire} symbol='AAPL' />
+							<Ticker width={1 / 2} background={gradients.berry} symbol='TSLA' />
+							<Ticker width={1 / 2} background={gradients.evening} symbol='SHOP' />
+							<Ticker width={1 / 2} background={gradients.sunset} symbol='WMT' />
 						</DashGroup>
 					</Board>
 

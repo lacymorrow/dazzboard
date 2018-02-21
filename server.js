@@ -8,7 +8,7 @@ const handle = app.getRequestHandler()
 app
 	.prepare()
 	.then(() => {
-		const port = 3000
+		const port = 4000
 		const server = express()
 
 		server.get('*', (req, res) => {
