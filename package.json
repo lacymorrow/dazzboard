@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "🔋 A juiced boilerplate for Next.JS projects.",
   "main": "pages/index.js",
-  "entry
   "repository": "github:lacymorrow/init-next",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
