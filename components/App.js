@@ -24,14 +24,13 @@ import Code from './Code'
 import Clock from './elements/Clock'
 import Ticker from './elements/Ticker'
 
-import {ALPHA_VANTAGE_KEY} from '../secrets'
+// import {ALPHA_VANTAGE_KEY} from '../secrets'
 
 class App extends React.Component {
 
 	constructor ( props ) {
 
 		super( props )
-		console.log( 'key', ALPHA_VANTAGE_KEY )
 		this.state =
 			{
 				drawerOpen: false,
