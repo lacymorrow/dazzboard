@@ -4,7 +4,7 @@
 
 
 ## Features
- * Built with React. Use any React component as a dashboard object 🍡
+ * Built with React + Next. Use any React component as a dashboard object 🍡
  * Pre-cooked on the server for instant page loads with SSR 🍳
  * Includes basic components to fill your first board 🍇
 

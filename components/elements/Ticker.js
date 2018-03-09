@@ -15,7 +15,7 @@ const lookup = ( symbol ) => new Promise( ( resolve, reject ) => {
 	 fetch( proxy + `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?&modules=summaryProfile,financialData` )
 	 .then( res => res.json() )
 	 .then( res => {
-
+	 	console.log(res)
 		const financialData = res.quoteSummary.result[0].financialData
 		  if ( !financialData ) {
 
@@ -24,11 +24,12 @@ const lookup = ( symbol ) => new Promise( ( resolve, reject ) => {
 		}
 		 resolve( {
 				 symbol,
-				 currentPrice: financialData.currentPrice.raw,
-				 highPrice: financialData.targetHighPrice.raw,
-				 lowPrice: financialData.targetLowPrice.raw,
-				 meanPrice: financialData.targetMeanPrice.raw,
-				 medianPrice: financialData.targetMedianPrice.raw
+				 currentPrice: financialData.currentPrice.fmt, // || raw for numbers
+				 highPrice: financialData.targetHighPrice.fmt,
+				 lowPrice: financialData.targetLowPrice.fmt,
+				 meanPrice: financialData.targetMeanPrice.fmt,
+				 medianPrice: financialData.targetMedianPrice.fmt,
+				 recommendation: '(' + financialData.recommendationKey + ')'
 		 } )
 
 		} )
@@ -44,8 +45,9 @@ class Ticker extends React.Component {
 		this.state = {
 			symbol: props.symbol || 'AAPL',
 			ticker: {
-				currentPrice: '--'
-
+				currentPrice: '--',
+				meanPrice: '--',
+				recommendation: ''
 			}
 		}
 
@@ -71,9 +73,9 @@ class Ticker extends React.Component {
 		return (
 			<Card
 				className='ticker'
-				title={this.state.ticker.symbol}
-				text={'' + this.state.ticker.currentPrice}
-				subtext={'AVG: ' + this.state.ticker.meanPrice}
+				title={this.state.symbol}
+				text={this.state.ticker.currentPrice}
+				subtext={'AVG: ' + this.state.ticker.meanPrice + '  ' + this.state.ticker.recommendation}
 				{...this.props} />
 		)
 
