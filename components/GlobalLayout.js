@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Footer from './Footer'
 import Script from './Script'
 
-import { colors, gradient } from './styles'
+import { colors } from './styles'
 
 
 const Layout = (props) => {
@@ -19,7 +19,7 @@ const Layout = (props) => {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-			// backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
+			backgroundImage: 'linear-gradient(180deg, #f476b7 0%, #8041ee 100%)'
 		}
 	}
 

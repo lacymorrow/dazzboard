@@ -57,6 +57,7 @@ typings/
 
 # dotenv environment variables file
 .env
+package-lock.json
 secrets.js
 .next
 out
