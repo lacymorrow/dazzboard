@@ -1,6 +1,6 @@
-# Dashes 
+# 🍱 Dazzboard
 
-> A Dashboard that works for you
+> A  ✨ dazzling 💫  dashboard that works for you
 
 
 ## Features
@@ -9,15 +9,15 @@
  * Includes basic components to fill your first board 🍇
 
 
-[![Dashes](https://raw.githubusercontent.com/lacymorrow/dashes/master/static/screenshot.png)](https://github.com/lacymorrow/dashes)
+[![dazzboard](https://raw.githubusercontent.com/Dazzboard/dazzboard/master/static/screenshot.png)](https://github.com/Dazzboard/dazzboard)
 
 
 ## Install
 
 ```bash
 # Clone the repository
-$ git clone https://github.com/lacymorrow/dashes.git
-$ cd dashes
+$ git clone https://github.com/Dazzboard/dazzboard.git
+$ cd dazzboard
 
 # Install dependencies
 $ npm install
@@ -56,7 +56,7 @@ A container for holding a singular componentized element.
 
 ### \<Board />
 
-A collection of `<Dash />` elements representing a single dashboard. Stack multiple for to add more Dashes.
+A collection of `<Dash />` elements representing a single dashboard. Nest multiple to add more Dazzboards.
 (_also `<DashGroup />`, `<DashList />`, `<DashTabs />`_)
 
 ###### Optional properties
