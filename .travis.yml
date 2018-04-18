@@ -1,6 +1,12 @@
 language: node_js
 node_js:
   - "node"
-
-script:
+cache: npm
+script: npm run deploy
   - npm -v
+  - npm run deploy
+
+after_script: npm run alias
+env:
+global:
+    secure: <this is your encrypted NOW token. It was added when you ran travis encrypt>

@@ -1,4 +1,7 @@
-# 🍱 Dazzboard
+[![dazzboard logo](https://raw.githubusercontent.com/Dazzboard/dazzboard/master/static/logo.png)](https://github.com/Dazzboard/dazzboard)
+
+
+# Dazzboard
 
 > A  ✨ dazzling 💫  dashboard that works for you
 
@@ -200,7 +203,7 @@ Sets the Flexbox `flex-wrap`.
 ###### Usage:
 
 ```jsx
-fill='true'
+wrap='true'
 ```
 
 
