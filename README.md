@@ -5,6 +5,7 @@
 
 > A  ✨ dazzling 💫  dashboard that works for you
 
+[Live Demo](https://dazzboard.now.sh)
 
 ## Features
  * Built with React + Next. Use any React component as a dashboard object 🍡

@@ -42,7 +42,11 @@ const Formatter = ( props ) => {
 
 			return <Second key={idx} {...props} />
 
-		} else if ( e === 'p' ) {
+		} else if ( e === 'p') {
+
+			if ( !props.twelveHours ) {
+				return false
+			}
 
 			return <Ampm key={idx} {...props} />
 
@@ -125,6 +129,7 @@ class Clock extends React.Component {
 					hours={hour}
 					minutes={minute}
 					seconds={second}
+					twelveHours={true}
 				/>
 			</div>
 		)

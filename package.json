@@ -1,9 +1,9 @@
 {
-  "name": "init-next",
+  "name": "dazzboard",
   "version": "1.0.0",
-  "description": "🔋 A juiced boilerplate for Next.JS projects.",
+  "description": "A ✨ dazzling 💫 dashboard that works for you",
   "main": "pages/index.js",
-  "repository": "github:lacymorrow/init-next",
+  "repository": "github:dazzboard/dazzboard",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "next": "next",
