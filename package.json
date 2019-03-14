@@ -11,11 +11,24 @@
     "build": "next build",
     "export": "next export",
     "deploy": "now deploy",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "proton": "node_modules/.bin/babel-node index.js",
+    "protonbuild": "node_modules/.bin/babel index.js -d bin/",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "utilty"
+  ],
+  "author": "Lacy Morrow <me@lacymorrow.com>",
   "license": "ISC",
+  "devDependencies": {
+    "electron-builder": "latest",
+    "babel-cli": "latest",
+    "babel-preset-env": "latest",
+    "babel-preset-stage-0": "latest",
+    "babel-preset-react": "latest"
+  },
   "dependencies": {
     "express": "^4.16.2",
     "google-map-react": "^0.31.0",
@@ -30,5 +43,11 @@
     "stocks.js": "0.0.17",
     "yahoo-stocks": "^2.0.1",
     "zipcodes": "^6.0.0"
+  },
+  "build": {
+    "protonNodeVersion": "current",
+    "mac": {
+      "identity": null
+    }
   }
 }
