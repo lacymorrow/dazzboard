@@ -1,0 +1,6 @@
+directories:
+  output: dist
+  buildResources: build
+protonNodeVersion: current
+mac:
+  identity: null
