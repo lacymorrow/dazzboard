@@ -1,3 +1,6 @@
+[!WARNING]  
+This project is unmaintained.
+
 [![dazzboard logo](https://raw.githubusercontent.com/Dazzboard/dazzboard/master/static/logo.png)](https://github.com/Dazzboard/dazzboard)
 
 > A  ✨ dazzling 💫  dashboard that works for you
