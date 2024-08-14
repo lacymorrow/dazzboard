@@ -107,20 +107,20 @@ class App extends React.Component {
 							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
 							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
 						</Flex>
-						<div>
+						<Flex width={[1, 1, 1, 1 / 2]} height='285px' direction='column'>
 							<Dash className='code' width={[1, 1, 1, 1]} direction='column'>
 								<Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
 								<Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
 								<Code color={colors.success}>Project has been successfully compiled</Code>
 							</Dash>
-							<Dash style={{ height: '215px' }} width={[1, 1, 1, 1]}>
+							<Dash style={{ height: '210px' }} width={[1, 1, 1, 1]}>
 								<GoogleMapReact
 									bootstrapURLKeys={{ key: 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro' }}
 									center={{ lat: this.state.zip.latitude, lng: this.state.zip.longitude }}
 									zoom={11}
 								/>
 							</Dash>
-						</div>
+						</Flex>
 
 						<Dash width={1 / 4} style={{ marginBottom: '2px' }} >
 							<Clock color={gradients.sunset} />
