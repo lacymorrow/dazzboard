@@ -6,59 +6,57 @@ import zipcodes from 'zipcodes'
 // import LYQL from 'lyql'
 
 
-import fetch from 'isomorphic-unfetch'
 import jsonp from 'jsonp'
-import PropTypes from 'prop-types'
 import { Flex } from 'rebass'
 
-import Layout from './GlobalLayout'
+import Board from './Board'
 import Card from './Card'
-import Header from './Header'
-import { colors, gradients } from './styles'
+import Code from './Code'
+import Dash from './Dash'
 import DashGroup from './DashGroup'
 import DashList from './DashList'
 import DashTabs from './DashTabs'
-import Dash from './Dash'
-import Board from './Board'
-import Code from './Code'
 import Clock from './elements/Clock'
 import Ticker from './elements/Ticker'
+import Layout from './GlobalLayout'
+import Header from './Header'
+import { colors, gradients } from './styles'
 
 // import {ALPHA_VANTAGE_KEY} from '../secrets'
 
 class App extends React.Component {
 
-	constructor ( props ) {
+	constructor(props) {
 
-		super( props )
+		super(props)
 		this.state =
-			{
-				drawerOpen: false,
-				ticker: {},
-				repo: {},
-				zip: {}
-			}
+		{
+			drawerOpen: false,
+			ticker: {},
+			repo: {},
+			zip: {}
+		}
 	}
 
-	componentDidMount () {
+	componentDidMount() {
 
 		// Github
-		jsonp( 'https://api.github.com/repos/jxnblk/rebass', ( err, response ) => {
+		jsonp('https://api.github.com/repos/jxnblk/rebass', (err, response) => {
 
-			this.setState( { repo: response.data } )
-			console.log( response.data )
+			this.setState({ repo: response.data })
+			console.log(response.data)
 
-		} ).bind( this )
+		}).bind(this)
 
 		// Map
-		this.setState( {zip: zipcodes.lookup( 94115 ) } )
+		this.setState({ zip: zipcodes.lookup(94115) })
 
 	}
 
-	demo ( ix, k ) {
+	demo(ix, k) {
 
 		var els = []
-		for ( var i = 0; i < ix; i++ ) {
+		for (var i = 0; i < ix; i++) {
 
 			els.push(
 				<Dash key={k + i}
@@ -66,7 +64,7 @@ class App extends React.Component {
 					subtitle='160ms RTT'
 					text='0.4mbps'
 					subtext='119.06s'
-					badge={{error: '+114.06s'}}>
+					badge={{ error: '+114.06s' }}>
 				</Dash>
 			)
 
@@ -75,7 +73,7 @@ class App extends React.Component {
 
 	}
 
-	render () {
+	render() {
 
 		const sx = {
 			app: {
@@ -109,25 +107,26 @@ class App extends React.Component {
 							<Card background={gradients.berry} title='Errors and Warnings' text='0' subtext='and no warnings' />
 							<Card background={gradients.evening} title='Total Asset Size' text='6.23 MB' />
 						</Flex>
-						<Dash className='code' width={[1, 1, 1, 1 / 2]} direction='column'>
-							<Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
-							<Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
-							<Code color={colors.success}>Project has been successfully compiled</Code>
-						</Dash>
+						<div>
+							<Dash className='code' width={[1, 1, 1, 1]} direction='column'>
+								<Code color={colors.info}>Hash: 3e01a671b7487e20e936<br />Webpack version: 3.6.0</Code>
+								<Code color={colors.warn}>Note: Running dev-server does not necessarily represent accurate final assets size and performance metrics.</Code>
+								<Code color={colors.success}>Project has been successfully compiled</Code>
+							</Dash>
+							<Dash style={{ height: '215px' }} width={[1, 1, 1, 1]}>
+								<GoogleMapReact
+									bootstrapURLKeys={{ key: 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro' }}
+									center={{ lat: this.state.zip.latitude, lng: this.state.zip.longitude }}
+									zoom={11}
+								/>
+							</Dash>
+						</div>
 
-						<Dash style={{height: '215px'}} width={[1, 1, 1, 1 / 2]}>
-							<GoogleMapReact
-								bootstrapURLKeys={{key: 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro'}}
-								center={{lat: this.state.zip.latitude, lng: this.state.zip.longitude}}
-								zoom={11}
-							/>
-						</Dash>
-
-						<Dash width={1 / 4} style={{marginBottom: '2px'}} >
+						<Dash width={1 / 4} style={{ marginBottom: '2px' }} >
 							<Clock color={gradients.sunset} />
 						</Dash>
 
-						
+
 
 						<DashGroup width={[1, 1, 1, 1 / 4]} height='285px'>
 							<Ticker width={1 / 2} background={gradients.fire} symbol='AAPL' />
@@ -143,18 +142,18 @@ class App extends React.Component {
 								<Dash
 									title='dist/components/Script.js'
 									text='829 MB'
-									badge={{ success: {text: 'OK', link: '#'} }}>
+									badge={{ success: { text: 'OK', link: '#' } }}>
 								</Dash>
-								{ this.demo( 10, 'b' ) }
+								{this.demo(10, 'b')}
 							</DashGroup>
 
 							<DashGroup title="Treeshakeable" text="6" subtext="2%">
 								<Dash
 									title='/user/name/random/file/path/dist/components/Script.js'
 									text='1.08 KB'
-									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+									badge={{ success: { text: 'OK', link: '#' }, error: { text: 'OK', link: '#' } }}>
 								</Dash>
-								{ this.demo( 10, 'c' ) }
+								{this.demo(10, 'c')}
 							</DashGroup>
 
 							<DashList title="Non-Treeshakeable" text="343" subtext="100%">
@@ -166,29 +165,29 @@ class App extends React.Component {
 									title='./node_modules/core-js/library/modules/_core.js'
 									text='122 Bytes'>
 								</Dash>
-								{ this.demo( 10, 'd' ) }
+								{this.demo(10, 'd')}
 							</DashList>
 
 							<DashList title="Mixed Modules" text="3" subtext="10%">
 								<Dash
 									title='dist/components/Script.js'
 									text='829 MB'
-									badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+									badge={{ success: { text: 'OK', link: '#' }, error: { text: 'OK', link: '#' } }}>
 								</Dash>
 								<Dash
 									title='./node_modules/core-js/library/modules/_core.js'
 									text='122 Bytes'>
 								</Dash>
-								{ this.demo( 10, 'e' ) }
+								{this.demo(10, 'e')}
 							</DashList>
 						</DashTabs>
 						<DashGroup width={[1, 1, 1, 1 / 2]} title="File List">
 							<Dash
 								title='dist/components/Script.js'
 								text='0 CHUNKS, 1.08 KB'
-								badge={{ success: {text: 'OK', link: '#'}, error: {text: 'OK', link: '#'} }}>
+								badge={{ success: { text: 'OK', link: '#' }, error: { text: 'OK', link: '#' } }}>
 							</Dash>
-							{ this.demo( 20, 'f' ) }
+							{this.demo(20, 'f')}
 						</DashGroup>
 					</Board>
 				</div>
