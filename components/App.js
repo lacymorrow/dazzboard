@@ -24,6 +24,8 @@ import { colors, gradients } from './styles'
 
 // import {ALPHA_VANTAGE_KEY} from '../secrets'
 
+const MAPS_API_KEY = process.env.NEXT_PUBLIC_MAPS_API_KEY || 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro'
+
 class App extends React.Component {
 
 	constructor(props) {
@@ -41,7 +43,7 @@ class App extends React.Component {
 	componentDidMount() {
 
 		// Github
-		jsonp('https://api.github.com/repos/jxnblk/rebass', (err, response) => {
+		jsonp('https://api.github.com/repos/lacymorrow/dazzboard', (err, response) => {
 
 			this.setState({ repo: response.data })
 			console.log(response.data)
@@ -115,7 +117,7 @@ class App extends React.Component {
 							</Dash>
 							<Dash style={{ height: '210px' }} width={[1, 1, 1, 1]}>
 								<GoogleMapReact
-									bootstrapURLKeys={{ key: 'AIzaSyAgy7hEbpa5f6db4beN2kycYR5TBu-jzro' }}
+									bootstrapURLKeys={{ key: MAPS_API_KEY }}
 									center={{ lat: this.state.zip.latitude, lng: this.state.zip.longitude }}
 									zoom={11}
 								/>

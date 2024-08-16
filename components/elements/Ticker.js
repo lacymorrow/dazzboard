@@ -3,45 +3,47 @@
  * Uses Yahoo Stocks API
  */
 
-import jsonp from 'jsonp'
 import fetch from 'isomorphic-unfetch'
 
-import { colors } from '../styles'
 import Card from '../Card'
 
-const lookup = ( symbol ) => new Promise( ( resolve, reject ) => {
+const lookup = (symbol) => new Promise((resolve, reject) => {
 
-	 const proxy = 'https://peacecors.herokuapp.com/'
-	 fetch( proxy + `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?&modules=summaryProfile,financialData` )
-	 .then( res => res.json() )
-	 .then( res => {
-	 	console.log(res)
-		const financialData = res.quoteSummary.result[0].financialData
-		  if ( !financialData ) {
+	const proxy = 'https://cors-proxy-share-azure.vercel.app/'
+	const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?&modules=summaryProfile,financialData`
+	fetch(proxy, {
+		method: 'POST',
+		body: JSON.stringify({ url })
+	})
+		.then(res => res.json())
+		.then(res => {
+			console.log(res)
+			const financialData = res.quoteSummary.result[0].financialData
+			if (!financialData) {
 
-		 		 reject( {} )
+				reject({})
 
-		}
-		 resolve( {
-				 symbol,
-				 currentPrice: financialData.currentPrice.fmt, // || raw for numbers
-				 highPrice: financialData.targetHighPrice.fmt,
-				 lowPrice: financialData.targetLowPrice.fmt,
-				 meanPrice: financialData.targetMeanPrice.fmt,
-				 medianPrice: financialData.targetMedianPrice.fmt,
-				 recommendation: '(' + financialData.recommendationKey + ')'
-		 } )
+			}
+			resolve({
+				symbol,
+				currentPrice: financialData.currentPrice.fmt, // || raw for numbers
+				highPrice: financialData.targetHighPrice.fmt,
+				lowPrice: financialData.targetLowPrice.fmt,
+				meanPrice: financialData.targetMeanPrice.fmt,
+				medianPrice: financialData.targetMedianPrice.fmt,
+				recommendation: '(' + financialData.recommendationKey + ')'
+			})
 
-		} )
-		 .catch( reject )
+		})
+		.catch(reject)
 
-} )
+})
 
 class Ticker extends React.Component {
 
-	constructor ( props ) {
+	constructor(props) {
 
-		super( props )
+		super(props)
 		this.state = {
 			symbol: props.symbol || 'AAPL',
 			ticker: {
@@ -52,21 +54,21 @@ class Ticker extends React.Component {
 		}
 
 	}
-	componentDidMount () {
+	componentDidMount() {
 
-		this.fetchRequest = lookup( this.state.symbol )
-			.then( ( res ) => {
-				this.setState( {ticker: res} )
-			} )
+		this.fetchRequest = lookup(this.state.symbol)
+			.then((res) => {
+				this.setState({ ticker: res })
+			})
 
 	}
-	componentWillUnmount () {
+	componentWillUnmount() {
 
 		typeof this.fetchRequest.cancel === 'function' && this.fetchRequest.cancel()
 
 	}
 
-	render () {
+	render() {
 
 		const { symbol, ticker } = this.state
 
